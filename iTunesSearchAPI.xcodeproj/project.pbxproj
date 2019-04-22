@@ -22,6 +22,7 @@
 		3778D599226DE76A005C5540 /* SearchCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D597226DE76A005C5540 /* SearchCollectionViewModel.swift */; };
 		3778D59A226DE76A005C5540 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D598226DE76A005C5540 /* SearchViewModel.swift */; };
 		3778D59C226DE79A005C5540 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D59B226DE79A005C5540 /* SearchResultViewController.swift */; };
+		3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D59D226DE7CA005C5540 /* SearchResultDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		3778D597226DE76A005C5540 /* SearchCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewModel.swift; sourceTree = "<group>"; };
 		3778D598226DE76A005C5540 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3778D59B226DE79A005C5540 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		3778D59D226DE7CA005C5540 /* SearchResultDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 		3778D592226DE5FB005C5540 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				3778D59D226DE7CA005C5540 /* SearchResultDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				3778D565226DE50A005C5540 /* AppDelegate.swift in Sources */,
 				3778D594226DE682005C5540 /* Enums.swift in Sources */,
 				3778D59A226DE76A005C5540 /* SearchViewModel.swift in Sources */,
+				3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
 				3778D59C226DE79A005C5540 /* SearchResultViewController.swift in Sources */,
 				3778D596226DE737005C5540 /* Result.swift in Sources */,
