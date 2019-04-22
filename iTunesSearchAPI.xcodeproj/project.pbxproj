@@ -17,6 +17,7 @@
 		3778D58A226DE55D005C5540 /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D586226DE55D005C5540 /* APIProtocol.swift */; };
 		3778D58B226DE55D005C5540 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D587226DE55D005C5540 /* APIService.swift */; };
 		3778D58C226DE55D005C5540 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D588226DE55D005C5540 /* APIClient.swift */; };
+		3778D594226DE682005C5540 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D593226DE681005C5540 /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		3778D586226DE55D005C5540 /* APIProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
 		3778D587226DE55D005C5540 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		3778D588226DE55D005C5540 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		3778D593226DE681005C5540 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,12 @@
 			isa = PBXGroup;
 			children = (
 				3778D584226DE542005C5540 /* Network */,
+				3778D591226DE5F0005C5540 /* Utils */,
+				3778D590226DE5EA005C5540 /* Model */,
+				3778D58F226DE5E3005C5540 /* View */,
+				3778D58E226DE5D4005C5540 /* ViewModel */,
+				3778D58D226DE5C8005C5540 /* Controllers */,
+				3778D592226DE5FB005C5540 /* DataSource */,
 				3778D564226DE50A005C5540 /* AppDelegate.swift */,
 				3778D566226DE50A005C5540 /* ViewController.swift */,
 				3778D568226DE50A005C5540 /* Main.storyboard */,
@@ -114,6 +122,49 @@
 				3778D585226DE55D005C5540 /* JSONParser.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		3778D58D226DE5C8005C5540 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3778D58E226DE5D4005C5540 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3778D58F226DE5E3005C5540 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3778D590226DE5EA005C5540 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3778D591226DE5F0005C5540 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3778D593226DE681005C5540 /* Enums.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3778D592226DE5FB005C5540 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +272,7 @@
 				3778D58B226DE55D005C5540 /* APIService.swift in Sources */,
 				3778D567226DE50A005C5540 /* ViewController.swift in Sources */,
 				3778D565226DE50A005C5540 /* AppDelegate.swift in Sources */,
+				3778D594226DE682005C5540 /* Enums.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
 				3778D58C226DE55D005C5540 /* APIClient.swift in Sources */,
 			);
