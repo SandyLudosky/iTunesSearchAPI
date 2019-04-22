@@ -34,6 +34,8 @@ class SearchResultViewController: UIViewController {
             if error == nil {
                 self.collectionView.dataSource = self.dataSource
                 self.collectionView.reloadData()
+            } else {
+                print("error = \(String(describing: error?.description))")
             }
         }
     }
@@ -83,6 +85,8 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
                         guard let results = self.viewModel.data else { return }
                         self.dataSource?.update(with: results)
                         self.collectionView.reloadData()
+                    } else {
+                         print("error = \(String(describing: error?.description))")
                     }
                 }
             } else {
@@ -91,6 +95,8 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
                         guard let results = self.viewModel.data else { return }
                         self.dataSource?.update(with: results)
                         self.collectionView.reloadData()
+                    } else {
+                        print("error = \(String(describing: error?.description))")
                     }
                 }
             }
