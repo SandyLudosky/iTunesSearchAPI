@@ -32,10 +32,4 @@ class SearchCollectionViewCell: UICollectionViewCell {
             self.isUserInteractionEnabled = false
         }
     }
-    
-    public func didSelect(for model: SearchCollectionViewModel) {
-        if let preview = model.previewURL {
-            
-        }
-    }
 }

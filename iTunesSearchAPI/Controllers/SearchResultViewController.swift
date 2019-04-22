@@ -123,7 +123,10 @@ extension SearchResultViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("track selected \(String(describing: viewModel.data?[indexPath.row]))")
         guard let currentCell = collectionView.cellForItem(at: indexPath) as? SearchCollectionViewCell else { return }
-        performSegue(withIdentifier: "goToDetails", sender: currentCell)
+        let result = viewModel.data?[indexPath.row]
+        if let _ = result?.previewURL {
+             performSegue(withIdentifier: "goToDetails", sender: currentCell)
+        }
     }
 }
 

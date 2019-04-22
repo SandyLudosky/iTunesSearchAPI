@@ -20,6 +20,10 @@ class ResultDetailsViewController: UIViewController {
     var result: Result?
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureView()
     }
     
