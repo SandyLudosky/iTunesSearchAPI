@@ -11,30 +11,28 @@ import Foundation
 //https://itunes.apple.com/search?parameterkeyvalue
 public enum APIService: APIProtocol {
     case search(term: String, country: Country?, media: MediaType?, entity: Entity?)
-    case lookup(id: String, entity: Entity?) //look up with either id, artistID, AMG ArtistID, UPC ...
+    case lookup(id: String, entity: Entity?) //for ID-based lookups artistID/AMG ArtistID/UPC/EANs...
     case download(url: String) //to download media
     
     public var baseURL: String {
         switch self {
         case .search, .lookup: return "https://itunes.apple.com/"
-        case .download(let url) : return url
+        case .download(let url) : return url //media full url - no parameters
         }
     }
     public var endpoint: String {
         switch self {
-        case .search:
-            return "search"
-        case .lookup:
-            return "lookup"
-        case .download(_ ):
-            return ""
+        case .search: return "search"
+        case .lookup: return "lookup"
+        case .download(_ ): return ""
         }
     }
     
+    //either text or id
     public var parameter: String? {
         switch self {
         case .search(let term,_ ,_ ,_ ): return term
-        case .lookup(let id,_ ): return id
+        case .lookup(let id,_ ): return id //ID-based lookups artistID/AMG ArtistID/UPC/EANs...
         case .download: return nil
         }
     }
@@ -67,13 +65,19 @@ public enum APIService: APIProtocol {
 extension APIService {
     public var request: URLRequest? {
         var queryItems = [URLQueryItem]()
+       
+        //base URL
         guard let urlStr = URL(string: baseURL) else {
             //non fatal error
             fatalError("url not valid")
         }
+        
+        //endpoint
         guard var components = URLComponents(url: urlStr.appendingPathComponent(endpoint), resolvingAgainstBaseURL: false) else {
             return nil
         }
+        
+        //url parameters
         switch self {
             case .search:
                 queryItems.append(URLQueryItem(name: "term", value: parameter))
@@ -91,17 +95,16 @@ extension APIService {
             }
             default: break
         }
-        
         components.queryItems = queryItems
+        
         guard let url = components.url else {
             return nil
         }
         
-        let stringURL = "\(url)"
-        let allowedCharacterSet = (CharacterSet(charactersIn: "%").inverted)
-        guard let encodedString = stringURL.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) else {
+        guard let encodedURL = url.encode() else {
             fatalError("Unable to encode url")
         }
-        return URLRequest(url: URL(string: encodedString)!)
+        
+        return URLRequest(url: encodedURL)
     }
 }
