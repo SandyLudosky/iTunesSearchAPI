@@ -15,6 +15,8 @@ class ResultDetailsViewController: UIViewController {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var resultWebView: WKWebView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    
     let dataController = DataController()
     
     var result: Result?
@@ -28,6 +30,9 @@ class ResultDetailsViewController: UIViewController {
     }
     
     func configureView() {
+        resultWebView.uiDelegate = self
+        resultWebView.navigationDelegate = self
+      
         if let artwork = result?.artworkUrl60 {
             preview(with: artwork) { image in
                 DispatchQueue.main.async {
@@ -44,17 +49,6 @@ class ResultDetailsViewController: UIViewController {
             resultWebView.load(request)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ResultDetailsViewController {
@@ -66,5 +60,23 @@ extension ResultDetailsViewController {
                 completion(img)
             }
         }
+    }
+}
+
+extension ResultDetailsViewController: WKNavigationDelegate, WKUIDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("finish")
+        loader.stopAnimating()
+        loader.isHidden = false
+    }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+         loader.startAnimating()
+         print("did commit")
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        loader.stopAnimating()
+        print("did fail")
     }
 }

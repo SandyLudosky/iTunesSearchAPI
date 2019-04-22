@@ -124,21 +124,27 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QD0-AE-xzS">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QD0-AE-xzS" firstAttribute="centerY" secondItem="Jaz-zw-P7T" secondAttribute="centerY" id="LDa-Dt-gbA"/>
                             <constraint firstItem="BEs-KZ-wrD" firstAttribute="leading" secondItem="eCh-IK-esI" secondAttribute="leading" id="ME8-sN-QKn"/>
                             <constraint firstItem="zPD-kH-4sc" firstAttribute="trailing" secondItem="eCh-IK-esI" secondAttribute="trailing" id="PgI-eq-u2I"/>
                             <constraint firstItem="eCh-IK-esI" firstAttribute="bottom" secondItem="BEs-KZ-wrD" secondAttribute="bottom" id="WRd-8a-f5D"/>
                             <constraint firstItem="zPD-kH-4sc" firstAttribute="leading" secondItem="eCh-IK-esI" secondAttribute="leading" id="daX-pK-mIi"/>
                             <constraint firstItem="zPD-kH-4sc" firstAttribute="top" secondItem="eCh-IK-esI" secondAttribute="top" id="dui-9v-mvd"/>
                             <constraint firstItem="eCh-IK-esI" firstAttribute="trailing" secondItem="BEs-KZ-wrD" secondAttribute="trailing" id="fZ9-D3-ZRe"/>
+                            <constraint firstItem="QD0-AE-xzS" firstAttribute="centerX" secondItem="Jaz-zw-P7T" secondAttribute="centerX" id="jck-Sr-EvQ"/>
                             <constraint firstItem="BEs-KZ-wrD" firstAttribute="top" secondItem="zPD-kH-4sc" secondAttribute="bottom" id="tCk-xf-3aN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eCh-IK-esI"/>
                     </view>
                     <connections>
                         <outlet property="artistNameLabel" destination="K9n-fa-TGs" id="6tk-MC-HQ8"/>
+                        <outlet property="loader" destination="QD0-AE-xzS" id="M9F-aw-iz3"/>
                         <outlet property="resultImageView" destination="eZU-ud-hiZ" id="lGy-hK-A3T"/>
                         <outlet property="resultWebView" destination="BEs-KZ-wrD" id="BOO-lJ-sVB"/>
                         <outlet property="trackNameLabel" destination="hwa-ja-Tp0" id="l7e-wL-do6"/>
