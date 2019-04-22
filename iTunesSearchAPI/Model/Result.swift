@@ -35,12 +35,14 @@ struct Result: Codable  {
     var artworkUrl60: String?
     var previewURL: String?
     var trackTimeMillis: Int?
+    var primaryGenreName: String?
+    var contentAdvisoryRating: String?
 }
 
 extension Result {
     enum CodingKeys: String, CodingKey {
         // swiftlint:disable:next line_length
-        case trackName, artistName, collectionName, censoredName = "trackCensoredName", artworkUrl100, artworkUrl60, viewURL = "trackViewUrl", previewURL = "previewUrl", trackTimeMillis, explicit = "trackExplicitness", wrapper = "wrapperType", kind
+        case trackName, artistName, collectionName, censoredName = "trackCensoredName", artworkUrl100, artworkUrl60, viewURL = "trackViewUrl", previewURL = "previewUrl", trackTimeMillis, explicit = "trackExplicitness", wrapper = "wrapperType", kind, primaryGenreName, contentAdvisoryRating
     }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -57,6 +59,8 @@ extension Result {
         artworkUrl100 = try values.decodeIfPresent(String.self, forKey: .artworkUrl100) ?? ""
         previewURL = try values.decodeIfPresent(String.self, forKey: .previewURL)
         trackTimeMillis = try values.decodeIfPresent(Int.self, forKey: .trackTimeMillis)
+        primaryGenreName = try values.decodeIfPresent(String.self, forKey: .primaryGenreName)
+        contentAdvisoryRating = try values.decodeIfPresent(String.self, forKey: .contentAdvisoryRating)
     }
     
     public func encode(to encoder: Encoder) throws {

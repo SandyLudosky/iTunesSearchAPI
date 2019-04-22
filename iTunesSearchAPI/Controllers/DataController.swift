@@ -12,7 +12,7 @@ typealias Handler = (ResultObject<Any>) -> Void
 typealias DataHandler = (Data?, Error?) -> Void
 protocol DataControllerProtocol {
     func search(for term: String, country: Country?, type: MediaType?, entity: Entity?, completion: @escaping Handler)
-    func lookup(completion: @escaping Handler)
+    func lookup(with id: String, entity: Entity?, completion: @escaping Handler)
     func download(with preview: String, completion: @escaping DataHandler)
 }
 
@@ -21,6 +21,7 @@ class DataController {
 }
 
 extension DataController: DataControllerProtocol {
+    
     func search(for term: String, country: Country?, type: MediaType?, entity: Entity?, completion: @escaping Handler) {
         client.get(with: .search(term: term, country: country, media: type, entity: entity)) { results in
             switch results {
@@ -45,8 +46,28 @@ extension DataController: DataControllerProtocol {
         }
     }
     
-    func lookup(completion: @escaping Handler) {
-        
+    func lookup(with id: String, entity: Entity?, completion: @escaping Handler) {
+        client.get(with: .lookup(id: id, entity: entity)) { results in
+            switch results {
+            case .array(_), .data(_): break
+            case .dict(let dict):
+                guard let results = dict["results"] as? [[String : Any]] else {
+                    return
+                }
+                
+                let searchResults = try? results.map({ dict -> Result in
+                    let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
+                    let result = try JSONDecoder().decode(Result.self, from: data!)
+                    print(result)
+                    return result
+                })
+                
+                DispatchQueue.main.async {
+                    completion(.success(searchResults ?? []))
+                }
+            case .error(_): completion(.error(.invalidData))
+            }
+        }
     }
     
     func download(with preview: String, completion: @escaping DataHandler) {

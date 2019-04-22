@@ -12,11 +12,6 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeader: UIView!
     
-    
-    @IBAction func dismissAction(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     let viewModel = SearchResultViewModel()
     let searchController = UISearchController(searchResultsController: nil)
     var data: [Result] = []
@@ -35,7 +30,7 @@ class SearchResultViewController: UIViewController {
     }
     
     private func loadData() {
-        viewModel.fetch(term: "eminem", country: .us, type: .music, entity: .music(.song)) { error in
+        viewModel.search(term: "eminem", country: .us, type: .music, entity: .music(.song)) { error in
             if error == nil {
                 self.collectionView.dataSource = self.dataSource
                 self.collectionView.reloadData()
@@ -68,7 +63,7 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = action == .search ? "Search ..." : "LookUp with ID, UPCs or EANs..."
+        searchController.searchBar.placeholder = action == .search ? "Search ..." : "LookUp with IDs"
         searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.barTintColor = .lightGray
         searchController.searchBar.setBackgroundImage(UIImage(), for: .top, barMetrics: .default)
@@ -79,12 +74,24 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func updateSearchResults() {
+        
+        //action is either search with text or lookup with ID
         if !isSeachBarEmpty {
-            viewModel.fetch(term: seachBarText ?? "", country: .us, type: .music, entity: .music(.song)) { error in
-                if error == nil {
-                    guard let results = self.viewModel.data else { return }
-                    self.dataSource?.update(with: results)
-                    self.collectionView.reloadData()
+            if action == .search {
+                viewModel.search(term: seachBarText ?? "", country: .us, type: .music, entity: .music(.song)) { error in
+                    if error == nil {
+                        guard let results = self.viewModel.data else { return }
+                        self.dataSource?.update(with: results)
+                        self.collectionView.reloadData()
+                    }
+                }
+            } else {
+                viewModel.lookup(with: seachBarText ?? "", entity: nil) { error in
+                    if error == nil {
+                        guard let results = self.viewModel.data else { return }
+                        self.dataSource?.update(with: results)
+                        self.collectionView.reloadData()
+                    }
                 }
             }
         }
