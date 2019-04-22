@@ -34,13 +34,16 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="34O-pl-npi" customClass="SearchCollectionViewCell" customModule="iTunesSearchAPI" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchIdentifier" id="34O-pl-npi" customClass="SearchCollectionViewCell" customModule="iTunesSearchAPI" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="hJI-6h-tbP" kind="show" identifier="goToDetails" id="FOf-t0-YaK"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -67,20 +70,26 @@
             </objects>
             <point key="canvasLocation" x="2684" y="-94"/>
         </scene>
-        <!--View Controller-->
+        <!--Result Details View Controller-->
         <scene sceneID="8CK-e5-ztL">
             <objects>
-                <viewController id="hJI-6h-tbP" sceneMemberID="viewController">
+                <viewController id="hJI-6h-tbP" customClass="ResultDetailsViewController" customModule="iTunesSearchAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jaz-zw-P7T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rz0-K5-1xL">
+                                <rect key="frame" x="70" y="96" width="235" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="eCh-IK-esI"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzr-Jg-7lU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3372" y="-94"/>
+            <point key="canvasLocation" x="3517.5999999999999" y="-94.002998500749626"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="p3A-ZR-SCr">

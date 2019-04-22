@@ -43,6 +43,7 @@ class SearchResultViewController: UIViewController {
     private func configureView() {
         let nib = UINib(nibName: "SearchCollectionViewCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
+        collectionView.delegate = self
         configureSearchBar()
     }
 }
@@ -115,5 +116,37 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
+    }
+}
+
+extension SearchResultViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("track selected \(String(describing: viewModel.data?[indexPath.row]))")
+        guard let currentCell = collectionView.cellForItem(at: indexPath) as? SearchCollectionViewCell else { return }
+        performSegue(withIdentifier: "goToDetails", sender: currentCell)
+    }
+}
+
+// MARK: - Navigation
+extension SearchResultViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetails" {
+            
+            guard let cell = sender as? SearchCollectionViewCell else {
+                assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
+                return
+            }
+            
+            guard let resultDetailsVC = segue.destination as? ResultDetailsViewController else {
+                assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
+                return
+            }
+            
+            guard let indexPath = collectionView.indexPath(for: cell) else {
+                return
+            }
+            
+            resultDetailsVC.result = dataSource?.result(at: indexPath)
+        }
     }
 }

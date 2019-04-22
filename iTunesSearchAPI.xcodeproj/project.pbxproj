@@ -29,6 +29,7 @@
 		3778D5A6226DEA94005C5540 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */; };
 		3778D5A8226DEABD005C5540 /* Enums+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5A7226DEABD005C5540 /* Enums+Network.swift */; };
 		3778D5AA226DFECB005C5540 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5A9226DFECB005C5540 /* Extensions.swift */; };
+		3778D5AC226E0EAD005C5540 /* ResultDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5AB226E0EAD005C5540 /* ResultDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		3778D5A7226DEABD005C5540 /* Enums+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enums+Network.swift"; sourceTree = "<group>"; };
 		3778D5A9226DFECB005C5540 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3778D5AB226E0EAD005C5540 /* ResultDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				3778D5A3226DE898005C5540 /* DataController.swift */,
 				3778D59B226DE79A005C5540 /* SearchResultViewController.swift */,
+				3778D5AB226E0EAD005C5540 /* ResultDetailsViewController.swift */,
 				3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */,
 			);
 			path = Controllers;
@@ -314,6 +317,7 @@
 				3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
 				3778D5A8226DEABD005C5540 /* Enums+Network.swift in Sources */,
+				3778D5AC226E0EAD005C5540 /* ResultDetailsViewController.swift in Sources */,
 				3778D5A2226DE803005C5540 /* SearchCollectionViewCell.swift in Sources */,
 				3778D59C226DE79A005C5540 /* SearchResultViewController.swift in Sources */,
 				3778D5AA226DFECB005C5540 /* Extensions.swift in Sources */,

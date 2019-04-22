@@ -22,6 +22,10 @@ class SearchResultDataSource: NSObject {
     func update(with data: [Result]) {
        results = data
     }
+    
+    func result(at indexPath: IndexPath) -> Result {
+        return results[indexPath.row]
+    }
 }
 
  // MARK: - UICollectionViewDataSource

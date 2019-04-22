@@ -11,6 +11,7 @@ import UIKit
 
 struct SearchCollectionViewModel {
     let name: String
+    let artist: String
     let previewURL: String?
     let artwork: String?
     var image:UIImage?
@@ -20,6 +21,7 @@ struct SearchCollectionViewModel {
 extension SearchCollectionViewModel {
     init(with result: Result) {
         self.name = result.trackName
+        self.artist = result.artistName
         self.previewURL = result.previewURL
         self.artwork = result.artworkUrl60
     }
