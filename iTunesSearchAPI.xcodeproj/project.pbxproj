@@ -23,6 +23,8 @@
 		3778D59A226DE76A005C5540 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D598226DE76A005C5540 /* SearchViewModel.swift */; };
 		3778D59C226DE79A005C5540 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D59B226DE79A005C5540 /* SearchResultViewController.swift */; };
 		3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D59D226DE7CA005C5540 /* SearchResultDataSource.swift */; };
+		3778D5A1226DE803005C5540 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3778D59F226DE803005C5540 /* SearchCollectionViewCell.xib */; };
+		3778D5A2226DE803005C5540 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5A0226DE803005C5540 /* SearchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		3778D598226DE76A005C5540 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3778D59B226DE79A005C5540 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		3778D59D226DE7CA005C5540 /* SearchResultDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultDataSource.swift; sourceTree = "<group>"; };
+		3778D59F226DE803005C5540 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		3778D5A0226DE803005C5540 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,8 @@
 		3778D58F226DE5E3005C5540 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3778D5A0226DE803005C5540 /* SearchCollectionViewCell.swift */,
+				3778D59F226DE803005C5540 /* SearchCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 			files = (
 				3778D56F226DE50B005C5540 /* LaunchScreen.storyboard in Resources */,
 				3778D56C226DE50B005C5540 /* Assets.xcassets in Resources */,
+				3778D5A1226DE803005C5540 /* SearchCollectionViewCell.xib in Resources */,
 				3778D56A226DE50A005C5540 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +299,7 @@
 				3778D59A226DE76A005C5540 /* SearchViewModel.swift in Sources */,
 				3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
+				3778D5A2226DE803005C5540 /* SearchCollectionViewCell.swift in Sources */,
 				3778D59C226DE79A005C5540 /* SearchResultViewController.swift in Sources */,
 				3778D596226DE737005C5540 /* Result.swift in Sources */,
 				3778D58C226DE55D005C5540 /* APIClient.swift in Sources */,
