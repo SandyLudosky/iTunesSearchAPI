@@ -21,6 +21,7 @@
 		3778D596226DE737005C5540 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D595226DE737005C5540 /* Result.swift */; };
 		3778D599226DE76A005C5540 /* SearchCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D597226DE76A005C5540 /* SearchCollectionViewModel.swift */; };
 		3778D59A226DE76A005C5540 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D598226DE76A005C5540 /* SearchViewModel.swift */; };
+		3778D59C226DE79A005C5540 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D59B226DE79A005C5540 /* SearchResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		3778D595226DE737005C5540 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		3778D597226DE76A005C5540 /* SearchCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewModel.swift; sourceTree = "<group>"; };
 		3778D598226DE76A005C5540 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		3778D59B226DE79A005C5540 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		3778D58D226DE5C8005C5540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3778D59B226DE79A005C5540 /* SearchResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				3778D594226DE682005C5540 /* Enums.swift in Sources */,
 				3778D59A226DE76A005C5540 /* SearchViewModel.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
+				3778D59C226DE79A005C5540 /* SearchResultViewController.swift in Sources */,
 				3778D596226DE737005C5540 /* Result.swift in Sources */,
 				3778D58C226DE55D005C5540 /* APIClient.swift in Sources */,
 			);
