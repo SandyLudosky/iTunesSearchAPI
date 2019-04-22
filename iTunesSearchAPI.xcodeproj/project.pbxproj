@@ -25,6 +25,9 @@
 		3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D59D226DE7CA005C5540 /* SearchResultDataSource.swift */; };
 		3778D5A1226DE803005C5540 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3778D59F226DE803005C5540 /* SearchCollectionViewCell.xib */; };
 		3778D5A2226DE803005C5540 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5A0226DE803005C5540 /* SearchCollectionViewCell.swift */; };
+		3778D5A4226DE898005C5540 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5A3226DE898005C5540 /* DataController.swift */; };
+		3778D5A6226DEA94005C5540 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */; };
+		3778D5A8226DEABD005C5540 /* Enums+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5A7226DEABD005C5540 /* Enums+Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		3778D59D226DE7CA005C5540 /* SearchResultDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultDataSource.swift; sourceTree = "<group>"; };
 		3778D59F226DE803005C5540 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		3778D5A0226DE803005C5540 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		3778D5A3226DE898005C5540 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		3778D5A7226DEABD005C5540 /* Enums+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enums+Network.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +147,9 @@
 		3778D58D226DE5C8005C5540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3778D5A3226DE898005C5540 /* DataController.swift */,
 				3778D59B226DE79A005C5540 /* SearchResultViewController.swift */,
+				3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				3778D593226DE681005C5540 /* Enums.swift */,
+				3778D5A7226DEABD005C5540 /* Enums+Network.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -296,9 +305,12 @@
 				3778D567226DE50A005C5540 /* ViewController.swift in Sources */,
 				3778D565226DE50A005C5540 /* AppDelegate.swift in Sources */,
 				3778D594226DE682005C5540 /* Enums.swift in Sources */,
+				3778D5A6226DEA94005C5540 /* WelcomeViewController.swift in Sources */,
 				3778D59A226DE76A005C5540 /* SearchViewModel.swift in Sources */,
+				3778D5A4226DE898005C5540 /* DataController.swift in Sources */,
 				3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
+				3778D5A8226DEABD005C5540 /* Enums+Network.swift in Sources */,
 				3778D5A2226DE803005C5540 /* SearchCollectionViewCell.swift in Sources */,
 				3778D59C226DE79A005C5540 /* SearchResultViewController.swift in Sources */,
 				3778D596226DE737005C5540 /* Result.swift in Sources */,

@@ -12,10 +12,16 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeader: UIView!
     
+    
+    @IBAction func dismissAction(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     let viewModel = SearchResultViewModel()
     let searchController = UISearchController(searchResultsController: nil)
     var data: [Result] = []
     var searchActive : Bool = false
+    var action: Action?
     
     lazy var dataSource: SearchResultDataSource? = {
          guard let results = self.viewModel.data else { return nil }
@@ -62,14 +68,14 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search ..."
+        searchController.searchBar.placeholder = action == .search ? "Search ..." : "LookUp with ID, UPCs or EANs..."
         searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.barTintColor = .lightGray
         searchController.searchBar.setBackgroundImage(UIImage(), for: .top, barMetrics: .default)
         definesPresentationContext = true
         collectionViewHeader.backgroundColor = .lightGray
         collectionViewHeader.addSubview(self.searchController.searchBar)
-        self.navigationItem.rightBarButtonItem = nil
+  
     }
     
     private func updateSearchResults() {
