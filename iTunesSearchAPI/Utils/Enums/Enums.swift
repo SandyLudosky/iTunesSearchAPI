@@ -17,10 +17,10 @@ public enum ResultType<T> {
 
 public enum ResponseType {
     case success(Data)
-    case error(ErrorHandler)
+    case failure(ErrorHandler)
 }
 
 public enum ResultObject<T> {
     case success(T) 
-    case error(ErrorHandler)
+    case failure(ErrorHandler)
 }

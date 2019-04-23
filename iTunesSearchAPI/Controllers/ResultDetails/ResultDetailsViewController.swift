@@ -50,8 +50,6 @@ extension ResultDetailsViewController {
             }
         }
     }
-    
-   
 }
 
 extension ResultDetailsViewController: WKNavigationDelegate, WKUIDelegate {

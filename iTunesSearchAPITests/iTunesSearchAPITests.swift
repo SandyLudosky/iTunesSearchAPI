@@ -39,7 +39,7 @@ internal class DataControllerTests: XCTestCase  {
             switch result {
             case .success(_):
                 XCTAssertTrue(true, "result should be success")
-            case .error(_):
+            case .failure(_):
                 XCTAssertTrue(false, "result should be success")
             }
         }
@@ -53,7 +53,7 @@ internal class DataControllerTests: XCTestCase  {
             switch results {
             case .success(_):
                 XCTAssertTrue(false, "result should be success")
-            case .error(_):
+            case .failure(_):
                 XCTAssertTrue(true, "result should be error")
             }
         })

@@ -162,33 +162,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="gsf-1Y-Df7">
-                                <rect key="frame" x="30" y="297" width="315" height="73"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gsf-1Y-Df7">
+                                <rect key="frame" x="50" y="288.5" width="275" height="90"/>
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAp-W3-gc7">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="30"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAp-W3-gc7" customClass="Button" customModule="iTunesSearchAPI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
                                         <state key="normal" title="Search iTunes"/>
                                         <connections>
                                             <action selector="selectionAction:" destination="Af7-k7-4pZ" eventType="touchUpInside" id="62Z-Rn-wby"/>
                                             <action selector="selectionAction:" destination="ltJ-TY-GYr" eventType="touchUpInside" id="JD2-z7-HTH"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLJ-jR-zFg">
-                                        <rect key="frame" x="0.0" y="43" width="315" height="30"/>
-                                        <state key="normal" title="Look Up with iTunes IDs, UPCs/ EANs"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLJ-jR-zFg" customClass="Button" customModule="iTunesSearchAPI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="275" height="40"/>
+                                        <state key="normal" title="Look Up with iTunes IDs, UPCs ..."/>
                                         <connections>
                                             <action selector="selectionAction:" destination="Af7-k7-4pZ" eventType="touchUpInside" id="fwc-h0-IN8"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="wa2-Wo-50e"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gsf-1Y-Df7" firstAttribute="centerY" secondItem="FAB-iJ-r3J" secondAttribute="centerY" id="9ct-Mq-wUr"/>
-                            <constraint firstItem="gsf-1Y-Df7" firstAttribute="leading" secondItem="7v0-fd-ZKN" secondAttribute="leading" constant="30" id="a7N-Uo-Nwd"/>
+                            <constraint firstItem="gsf-1Y-Df7" firstAttribute="leading" secondItem="7v0-fd-ZKN" secondAttribute="leading" constant="50" id="a7N-Uo-Nwd"/>
                             <constraint firstItem="gsf-1Y-Df7" firstAttribute="centerX" secondItem="FAB-iJ-r3J" secondAttribute="centerX" id="lP4-de-kk8"/>
-                            <constraint firstItem="7v0-fd-ZKN" firstAttribute="trailing" secondItem="gsf-1Y-Df7" secondAttribute="trailing" constant="30" id="zCS-xn-3Cr"/>
+                            <constraint firstItem="7v0-fd-ZKN" firstAttribute="trailing" secondItem="gsf-1Y-Df7" secondAttribute="trailing" constant="50" id="zCS-xn-3Cr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7v0-fd-ZKN"/>
                     </view>

@@ -41,7 +41,7 @@ extension DataController: DataControllerProtocol {
                 DispatchQueue.main.async {
                     completion(.success(searchResults ?? []))
                 }
-              case .error(let reason): completion(.error(reason))
+              case .error(let reason): completion(.failure(reason))
             }
         }
     }
@@ -65,7 +65,7 @@ extension DataController: DataControllerProtocol {
                 DispatchQueue.main.async {
                     completion(.success(searchResults ?? []))
                 }
-             case .error(let reason): completion(.error(reason))
+             case .error(let reason): completion(.failure(reason))
             }
         }
     }

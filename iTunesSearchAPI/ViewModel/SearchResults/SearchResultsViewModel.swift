@@ -29,7 +29,7 @@ extension SearchResultsViewModel: SearchResultViewModelProtocol {
                     self.data = arr
                     completion(nil)
                 }
-            case .error(let reason):  completion(reason)
+            case .failure(let reason):  completion(reason)
             }
         }
     }
@@ -45,7 +45,7 @@ extension SearchResultsViewModel: SearchResultViewModelProtocol {
                     self.data = arr
                     completion(nil)
                 }
-            case .error(let reason):  completion(reason)
+            case .failure(let reason):  completion(reason)
             }
         }
     }
