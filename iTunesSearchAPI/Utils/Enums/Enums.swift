@@ -26,6 +26,3 @@ public enum ResultObject<T> {
 public enum Action {
     case search, lookUp
 }
-public enum Country: String {
-    case france, us
-}

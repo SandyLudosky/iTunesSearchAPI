@@ -35,7 +35,7 @@ extension APIService {
         switch self {
         case .search(let term, let media, let country):
             queryItems.append(URLQueryItem(name: "term", value: term))
-            queryItems.append(URLQueryItem(name: "country", value: country?.rawValue))
+            queryItems.append(URLQueryItem(name: "country", value: country?.abbreviation))
             
             if let media = media {
                 queryItems.append(URLQueryItem(name: "media", value: media.description))

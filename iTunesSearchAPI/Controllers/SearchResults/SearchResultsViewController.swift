@@ -28,7 +28,7 @@ class SearchResultsViewController: BaseViewController {
         loadData()
     }
     private func loadData() {
-        viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .us, completion: { err in
+        viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .unitedStates, completion: { err in
             if err == nil {
                 self.collectionView.dataSource = self.dataSource
                 self.collectionView.reloadData()
@@ -82,7 +82,7 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
             switch option {
             //search example search(term: "eminem", mediaType: .music(entity: .mix, attribute: .mixTerm)
             case .search:
-                viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .us, completion: { err in
+                viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .unitedKingdom, completion: { err in
                     if err == nil {
                         self.collectionView.dataSource = self.dataSource
                         self.collectionView.reloadData()

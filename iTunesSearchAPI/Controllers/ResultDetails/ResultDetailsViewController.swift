@@ -31,7 +31,6 @@ class ResultDetailsViewController: BaseViewController {
 
 extension ResultDetailsViewController {
     func configureView() {
-        
         if let r = result {
             viewModel.displayDetails(with: r) {
                 if #available(iOS 9.1, *) {

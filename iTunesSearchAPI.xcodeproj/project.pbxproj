@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370EA146226FC29600036D31 /* Enums+Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370EA145226FC29600036D31 /* Enums+Country.swift */; };
 		3778D565226DE50A005C5540 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D564226DE50A005C5540 /* AppDelegate.swift */; };
 		3778D56A226DE50A005C5540 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3778D568226DE50A005C5540 /* Main.storyboard */; };
 		3778D56C226DE50B005C5540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3778D56B226DE50B005C5540 /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370EA145226FC29600036D31 /* Enums+Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enums+Country.swift"; sourceTree = "<group>"; };
 		3778D561226DE50A005C5540 /* iTunesSearchAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearchAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3778D564226DE50A005C5540 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3778D569226DE50A005C5540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				3778D5A7226DEABD005C5540 /* Enums.swift */,
 				3778D5AF226F1416005C5540 /* Enums+Error.swift */,
+				370EA145226FC29600036D31 /* Enums+Country.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				3778D5A8226DEABD005C5540 /* Enums.swift in Sources */,
 				3778D5AC226E0EAD005C5540 /* ResultDetailsViewController.swift in Sources */,
 				3778D5A2226DE803005C5540 /* SearchCollectionViewCell.swift in Sources */,
+				370EA146226FC29600036D31 /* Enums+Country.swift in Sources */,
 				3778D59C226DE79A005C5540 /* SearchResultsViewController.swift in Sources */,
 				3778D5AE226E7467005C5540 /* AlertDialogView.swift in Sources */,
 				3778D5C4226F67DF005C5540 /* Button.swift in Sources */,
