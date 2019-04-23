@@ -29,14 +29,14 @@ class SearchResultsViewController: BaseViewController {
         loadData()
     }
     private func loadData() {
-        viewModel.search(term: "eminem", country: .us, type: .music, entity: .music(.song)) { err in
+        viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .us, completion: { err in
             if err == nil {
                 self.collectionView.dataSource = self.dataSource
                 self.collectionView.reloadData()
             } else {
                 AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
             }
-        }
+        })
     }
     private func configureView() {
         let nib = UINib(nibName: "SearchCollectionViewCell", bundle: nil)
@@ -76,17 +76,15 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
         //action is either search with text or lookup with ID
         if !isSeachBarEmpty {
             if action == .search {
-                viewModel.search(term: seachBarText ?? "", country: .us, type: .music, entity: .music(.song)) { err in
+                //search example search(term: "eminem", mediaType: .music(entity: .mix, attribute: .mixTerm)
+                viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .us, completion: { err in
                     if err == nil {
-                        guard let results = self.viewModel.data else {
-                            return
-                        }
-                        self.dataSource?.update(with: results)
+                        self.collectionView.dataSource = self.dataSource
                         self.collectionView.reloadData()
                     } else {
-                        print("error = \(String(describing: err?.errorDescription))")
+                        AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
                     }
-                }
+                })
             } else {
                 viewModel.lookup(with: seachBarText ?? "", entity: nil) { err in
                     if err == nil {

@@ -9,8 +9,8 @@
 import Foundation
 
 protocol SearchResultViewModelProtocol {
-    func search(term: String, country: Country?, type: MediaType?, entity: Entity?, completion: @escaping (ErrorHandler?) -> ())
-    func lookup(with id: String, entity: Entity?, completion: @escaping (ErrorHandler?) -> ())
+    func search(term: String, mediaType: Media?, country: Country?, completion: @escaping (ErrorHandler?) -> ())
+    func lookup(with id: String, entity: ItunesEntity?, completion: @escaping (ErrorHandler?) -> ())
 }
 class SearchResultsViewModel {
     let dataController = DataController()
@@ -18,7 +18,7 @@ class SearchResultsViewModel {
 }
 
 extension SearchResultsViewModel: SearchResultViewModelProtocol {
-    func lookup(with id: String, entity: Entity?, completion: @escaping (ErrorHandler?) -> ()) {
+    func lookup(with id: String, entity: ItunesEntity?, completion: @escaping (ErrorHandler?) -> ()) {
         dataController.lookup(with: id, entity: entity) { results in
             switch results {
             case .success(let array):
@@ -34,8 +34,8 @@ extension SearchResultsViewModel: SearchResultViewModelProtocol {
         }
     }
     
-    func search(term: String, country: Country?, type: MediaType?, entity: Entity?, completion: @escaping (ErrorHandler?) -> ()) {
-        dataController.search(for: term, country: nil, type: type, entity: entity) { results in
+    func search(term: String, mediaType: Media?, country: Country?, completion: @escaping (ErrorHandler?) -> ()) {
+        dataController.search(for: term, mediaType: mediaType, country: country) { results in
             switch results {
             case .success(let array):
                 guard let arr = array as? [Result] else {

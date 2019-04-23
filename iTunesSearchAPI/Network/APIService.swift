@@ -9,8 +9,8 @@
 import Foundation
 
 public enum APIService: APIProtocol {
-    case search(term: String, country: Country?, media: MediaType?, entity: Entity?)
-    case lookup(id: String, entity: Entity?) //for ID-based lookups artistID/AMG ArtistID/UPC/EANs...
+    case search(term: String, media: Media?, country: Country?)
+    case lookup(id: String, entity: ItunesEntity?) //for ID-based lookups artistID/AMG ArtistID/UPC/EANs...
     case download(url: String) //to download media
     
     public var baseURL: String {
@@ -26,37 +26,6 @@ public enum APIService: APIProtocol {
         case .download(_ ): return ""
         }
     }
-    
-    public var parameter: String? {
-        switch self {
-        case .search(let term,_ ,_ ,_ ): return term
-        case .lookup(let id,_ ): return id //ID-based lookups artistID/AMG ArtistID/UPC/EANs...
-        case .download: return nil
-        }
-    }
-    
-    public var country: Country? {
-        switch self {
-        case .search(_ , let country,_ , entity:_ ): return country
-        case .lookup, .download: return nil
-        }
-    }
-    
-    public var media: MediaType? {
-        switch self {
-        case .search(_ ,_ , let media,_ ): return media
-        case .lookup, .download: return nil
-        }
-    }
-    
-    public var entity: Entity? {
-        switch self {
-        case .search(_ ,_ ,_ , let entity),
-             .lookup(_, let entity):
-            return entity
-        case .download: return nil
-        }
-    }
 }
 
 extension APIService {
@@ -64,19 +33,30 @@ extension APIService {
         var queryItems = [URLQueryItem]()
         
         switch self {
-        case .search:
-            queryItems.append(URLQueryItem(name: "term", value: parameter))
+        case .search(let term, let media, let country):
+            queryItems.append(URLQueryItem(name: "term", value: term))
             queryItems.append(URLQueryItem(name: "country", value: country?.rawValue))
-            if let mediaType = media?.rawValue {
-                queryItems.append(URLQueryItem(name: "media", value: mediaType))
+            
+            if let media = media {
+                queryItems.append(URLQueryItem(name: "media", value: media.description))
+                
+                if let entityQueryItem = media.entityQueryItem {
+                    queryItems.append(entityQueryItem)
+                    print(entityQueryItem)
+                }
+                
+            
+                if let attributeQueryItem = media.attributeQueryItem {
+                    queryItems.append(attributeQueryItem)
+                       print(attributeQueryItem)
+                }
+                
+              
             }
-            if let entityType = entity?.string {
-                queryItems.append(URLQueryItem(name: "entity", value: entityType))
-            }
-        case .lookup:
-            queryItems.append(URLQueryItem(name: "id", value: parameter))
-            if let entityType = entity?.string {
-                queryItems.append(URLQueryItem(name: "entity", value: entityType))
+        case .lookup(let id, let entity):
+            queryItems.append(URLQueryItem(name: "id", value: id))
+            if let entityName = entity?.name {
+                queryItems.append(URLQueryItem(name: "entity", value:  entityName))
             }
         default: break
         }

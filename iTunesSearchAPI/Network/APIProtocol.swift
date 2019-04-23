@@ -11,9 +11,6 @@ import Foundation
 public protocol APIProtocol {
     var baseURL: String { get }
     var endpoint: String { get } // required
-    var country: Country? { get } //required
-    var media: MediaType? { get } //optional
-    var entity: Entity? { get } //optional
     var request: URLRequest? { get }
 }
 
@@ -33,6 +30,8 @@ extension APIProtocol {
         let encodedURL = url.encode(),
         let request =  URLRequest(url: encodedURL) as? URLRequest
         else { throw ErrorHandler.invalidRequest }
+        
+        print("URL: \(request.url)")
         return request
     }
 }

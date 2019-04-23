@@ -11,8 +11,8 @@ import Foundation
 typealias Handler = (ResultObject<Any>) -> Void
 typealias DataHandler = (Data?, Error?) -> Void
 protocol DataControllerProtocol {
-    func search(for term: String, country: Country?, type: MediaType?, entity: Entity?, completion: @escaping Handler)
-    func lookup(with id: String, entity: Entity?, completion: @escaping Handler)
+    func search(for term: String, mediaType: Media?, country: Country?, completion: @escaping Handler)
+    func lookup(with id: String, entity: ItunesEntity?, completion: @escaping Handler)
     func download(with url: String, completion: @escaping DataHandler)
 }
 class DataController {
@@ -20,8 +20,8 @@ class DataController {
 }
 
 extension DataController: DataControllerProtocol {
-    func search(for term: String, country: Country?, type: MediaType?, entity: Entity?, completion: @escaping Handler) {
-        client.get(with: .search(term: term, country: country, media: type, entity: entity)) { results in
+    func search(for term: String, mediaType: Media?, country: Country?, completion: @escaping Handler) {
+        client.get(with: .search(term: term, media: mediaType, country: country)) { results in
             switch results {
             case .array(_), .data(_): break
             case .dict(let dict):
@@ -42,7 +42,7 @@ extension DataController: DataControllerProtocol {
         }
     }
     
-    func lookup(with id: String, entity: Entity?, completion: @escaping Handler) {
+    func lookup(with id: String, entity: ItunesEntity?, completion: @escaping Handler) {
         client.get(with: .lookup(id: id, entity: entity)) { results in
             switch results {
             case .array(_), .data(_): break
