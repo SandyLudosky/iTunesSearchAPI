@@ -40,7 +40,7 @@ extension SearchResultDataSource: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let result = results[indexPath.row]
-        let viewModel = SearchCollectionViewModel(with: result)
+        let viewModel = SearchCollectionCellViewModel(with: result)
         cell.configure(with: viewModel)
         return cell
     }

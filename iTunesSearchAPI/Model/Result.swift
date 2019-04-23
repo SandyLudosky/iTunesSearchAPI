@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 public enum WrapperType {
     case track, collection, artist
 }
@@ -37,7 +37,9 @@ struct Result: Codable  {
     var trackTimeMillis: Int?
     var primaryGenreName: String?
     var contentAdvisoryRating: String?
+    var image: UIImage?
 }
+
 
 extension Result {
     enum CodingKeys: String, CodingKey {

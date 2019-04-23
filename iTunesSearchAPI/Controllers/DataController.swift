@@ -13,7 +13,7 @@ typealias DataHandler = (Data?, Error?) -> Void
 protocol DataControllerProtocol {
     func search(for term: String, country: Country?, type: MediaType?, entity: Entity?, completion: @escaping Handler)
     func lookup(with id: String, entity: Entity?, completion: @escaping Handler)
-    func download(with preview: String, completion: @escaping DataHandler)
+    func download(with url: String, completion: @escaping DataHandler)
 }
 
 class DataController {
@@ -70,8 +70,8 @@ extension DataController: DataControllerProtocol {
         }
     }
     
-    func download(with preview: String, completion: @escaping DataHandler) {
-        return client.get(with: .download(url: preview)) { result in
+    func download(with url: String, completion: @escaping DataHandler) {
+        return client.get(with: .download(url: url)) { result in
             switch result {
             case .array(_), .dict(_): break
             case .data(let data):
