@@ -86,10 +86,10 @@
 		3778D59F226DE803005C5540 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		3778D5A0226DE803005C5540 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3778D5A3226DE898005C5540 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
+		3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		3778D5A7226DEABD005C5540 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3778D5A9226DFECB005C5540 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		3778D5AB226E0EAD005C5540 /* ResultDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultDetailsViewController.swift; path = ResultDetails/ResultDetailsViewController.swift; sourceTree = "<group>"; };
+		3778D5AB226E0EAD005C5540 /* ResultDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailsViewController.swift; sourceTree = "<group>"; };
 		3778D5AD226E7467005C5540 /* AlertDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogView.swift; sourceTree = "<group>"; };
 		3778D5AF226F1416005C5540 /* Enums+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enums+Error.swift"; sourceTree = "<group>"; };
 		3778D5B2226F4D0F005C5540 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -194,10 +194,6 @@
 		3778D58D226DE5C8005C5540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3778D5AB226E0EAD005C5540 /* ResultDetailsViewController.swift */,
-				3778D5E8226F9C73005C5540 /* BaseViewController.swift */,
-				3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */,
-				3778D59B226DE79A005C5540 /* SearchResultsViewController.swift */,
 				3778D5E7226F9C14005C5540 /* Base */,
 				3778D5B6226F4FA8005C5540 /* Welcome */,
 				3778D5B4226F4F86005C5540 /* SearchResults */,
@@ -267,6 +263,7 @@
 		3778D5B4226F4F86005C5540 /* SearchResults */ = {
 			isa = PBXGroup;
 			children = (
+				3778D59B226DE79A005C5540 /* SearchResultsViewController.swift */,
 			);
 			path = SearchResults;
 			sourceTree = "<group>";
@@ -274,6 +271,7 @@
 		3778D5B5226F4F98005C5540 /* ResultDetails */ = {
 			isa = PBXGroup;
 			children = (
+				3778D5AB226E0EAD005C5540 /* ResultDetailsViewController.swift */,
 			);
 			path = ResultDetails;
 			sourceTree = "<group>";
@@ -281,6 +279,7 @@
 		3778D5B6226F4FA8005C5540 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -377,6 +376,7 @@
 		3778D5E7226F9C14005C5540 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				3778D5E8226F9C73005C5540 /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
