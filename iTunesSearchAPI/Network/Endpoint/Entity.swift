@@ -11,7 +11,6 @@ import Foundation
 public protocol ItunesEntity: QueryItemProvider {
     var name: String { get }
 }
-
 extension ItunesEntity {
     public var queryItem: URLQueryItem {
         return URLQueryItem(name: "entity", value: name)
