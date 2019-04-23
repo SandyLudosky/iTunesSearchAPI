@@ -115,31 +115,27 @@
                                     <constraint firstAttribute="height" constant="100" id="oVX-u3-Eot"/>
                                 </constraints>
                             </stackView>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEs-KZ-wrD">
-                                <rect key="frame" x="0.0" y="164" width="375" height="300"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="ujE-yy-slm"/>
-                                </constraints>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QD0-AE-xzS">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eB2-ZW-6eI">
+                                <rect key="frame" x="0.0" y="164" width="375" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="X0O-Li-piA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="QD0-AE-xzS" firstAttribute="centerY" secondItem="Jaz-zw-P7T" secondAttribute="centerY" id="LDa-Dt-gbA"/>
-                            <constraint firstItem="BEs-KZ-wrD" firstAttribute="leading" secondItem="eCh-IK-esI" secondAttribute="leading" id="ME8-sN-QKn"/>
                             <constraint firstItem="zPD-kH-4sc" firstAttribute="trailing" secondItem="eCh-IK-esI" secondAttribute="trailing" id="PgI-eq-u2I"/>
+                            <constraint firstItem="eB2-ZW-6eI" firstAttribute="leading" secondItem="eCh-IK-esI" secondAttribute="leading" id="cj4-F7-ntt"/>
                             <constraint firstItem="zPD-kH-4sc" firstAttribute="leading" secondItem="eCh-IK-esI" secondAttribute="leading" id="daX-pK-mIi"/>
-                            <constraint firstItem="BEs-KZ-wrD" firstAttribute="top" secondItem="IO1-51-n0L" secondAttribute="bottom" id="drA-fZ-cN3"/>
                             <constraint firstItem="zPD-kH-4sc" firstAttribute="top" secondItem="eCh-IK-esI" secondAttribute="top" id="dui-9v-mvd"/>
-                            <constraint firstItem="eCh-IK-esI" firstAttribute="trailing" secondItem="BEs-KZ-wrD" secondAttribute="trailing" id="fZ9-D3-ZRe"/>
+                            <constraint firstItem="eCh-IK-esI" firstAttribute="trailing" secondItem="eB2-ZW-6eI" secondAttribute="trailing" id="hFz-wa-j0i"/>
                             <constraint firstItem="QD0-AE-xzS" firstAttribute="centerX" secondItem="Jaz-zw-P7T" secondAttribute="centerX" id="jck-Sr-EvQ"/>
+                            <constraint firstItem="eB2-ZW-6eI" firstAttribute="top" secondItem="zPD-kH-4sc" secondAttribute="bottom" id="wzk-IX-4RU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eCh-IK-esI"/>
                     </view>
@@ -147,8 +143,8 @@
                         <outlet property="artistNameLabel" destination="K9n-fa-TGs" id="6tk-MC-HQ8"/>
                         <outlet property="loader" destination="QD0-AE-xzS" id="M9F-aw-iz3"/>
                         <outlet property="resultImageView" destination="eZU-ud-hiZ" id="lGy-hK-A3T"/>
-                        <outlet property="resultWebView" destination="BEs-KZ-wrD" id="BOO-lJ-sVB"/>
                         <outlet property="trackNameLabel" destination="hwa-ja-Tp0" id="l7e-wL-do6"/>
+                        <outlet property="webView" destination="eB2-ZW-6eI" id="vi0-SF-kCZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzr-Jg-7lU" userLabel="First Responder" sceneMemberID="firstResponder"/>

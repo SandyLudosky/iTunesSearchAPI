@@ -14,7 +14,7 @@ class ResultDetailsViewController: BaseViewController {
     @IBOutlet weak var resultImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var trackNameLabel: UILabel!
-    @IBOutlet weak var resultWebView: WKWebView!
+    @IBOutlet weak var webView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     let viewModel = ResultDetailsViewModel()
     var result: Result?
@@ -31,12 +31,18 @@ class ResultDetailsViewController: BaseViewController {
 
 extension ResultDetailsViewController {
     func configureView() {
-        resultWebView.uiDelegate = self
-        resultWebView.navigationDelegate = self
+        
         if let r = result {
             viewModel.displayDetails(with: r) {
-                if let req = viewModel.request {
-                    resultWebView.load(req)
+                if #available(iOS 9.1, *) {
+                    if let req = viewModel.request {
+                        let webConfiguration = WKWebViewConfiguration()
+                        let resultWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300), configuration: webConfiguration)
+                        resultWebView.uiDelegate = self
+                        resultWebView.navigationDelegate = self
+                        webView.addSubview(resultWebView)
+                        resultWebView.load(req)
+                    }
                 }
                 viewModel.loadArtwork(completion: { img in
                     self.resultImageView.image = img

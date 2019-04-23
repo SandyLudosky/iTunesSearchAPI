@@ -62,7 +62,12 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
         searchController.delegate = self
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = false
+        if #available(iOS 9.1, *) {
+            searchController.obscuresBackgroundDuringPresentation = false
+        } else {
+            // Fallback on earlier versions
+            searchController.dimsBackgroundDuringPresentation = false
+        }
         searchController.searchBar.placeholder = action == .search ? "Search ..." : "LookUp with IDs"
         searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.barTintColor = .lightGray
