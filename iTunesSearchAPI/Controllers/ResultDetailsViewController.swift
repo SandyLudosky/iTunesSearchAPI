@@ -60,7 +60,7 @@ extension ResultDetailsViewController {
                 completion(img)
             }
         }
-    }
+    }   
 }
 
 extension ResultDetailsViewController: WKNavigationDelegate, WKUIDelegate {

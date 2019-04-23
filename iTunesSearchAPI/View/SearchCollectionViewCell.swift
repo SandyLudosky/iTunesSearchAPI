@@ -16,6 +16,8 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
     }
     
     public func configure(with model: SearchCollectionViewModel) {

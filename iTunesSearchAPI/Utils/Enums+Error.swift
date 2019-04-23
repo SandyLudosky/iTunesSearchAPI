@@ -28,6 +28,7 @@ extension StatusCode {
 public enum ErrorHandler: Error {
     case unknownError
     case invalidData
+    case encodingError
     case itemNotFound
     case itemInvalid
     case responseUnsuccessful
@@ -53,6 +54,7 @@ extension ErrorHandler: LocalizedError {
         case .requestFailed: return NSLocalizedString("Request Failed", comment: "")
         case .jsonParsingFailure: return NSLocalizedString("Error Parsing JSON", comment: "")
         case .invalidURL: return NSLocalizedString("Invalid URL", comment: "")
+        case .encodingError: return NSLocalizedString("Error Encoding URL", comment: "")
         }
     }
     
@@ -68,6 +70,7 @@ extension ErrorHandler: LocalizedError {
         case .requestFailed: return NSLocalizedString("Request Failed", comment: "")
         case .jsonParsingFailure: return NSLocalizedString("Error Parsing JSON", comment: "")
         case .invalidURL: return NSLocalizedString("Invalid URL", comment: "")
+        case .encodingError: return NSLocalizedString("Error Encoding URL", comment: "")
         }
     }
     
@@ -83,6 +86,7 @@ extension ErrorHandler: LocalizedError {
         case .requestFailed: return NSLocalizedString("Please Check Request Attributes", comment: "")
         case .jsonParsingFailure: return NSLocalizedString("Please Check JSON response format", comment: "")
         case .invalidURL: return NSLocalizedString("Please Check if URL format is well structured as per iTunes API Documentation", comment: "")
+        case .encodingError: return NSLocalizedString("Please URL parameters and headers", comment: "")
         }
     }
     
@@ -98,6 +102,7 @@ extension ErrorHandler: LocalizedError {
         case .jsonParsingFailure: return NSLocalizedString("Please Check JSON response format", comment: "")
         case .responseFailure(let statusCode, let code): return NSLocalizedString("\(statusCode) - status code: \(code)", comment: "")
         case .invalidURL: return NSLocalizedString("Invalid URL", comment: "")
+        case .encodingError: return NSLocalizedString("Please URL parameters and headers", comment: "")
         }
     }
 }

@@ -66,20 +66,10 @@ extension APIService {
     public var request: URLRequest? {
         var queryItems = [URLQueryItem]()
        
-        //base URL
-        guard let urlStr = URL(string: baseURL) else {
-            //non fatal error
-            fatalError("url not valid")
-        }
-        
-        //endpoint
-        guard var components = URLComponents(url: urlStr.appendingPathComponent(endpoint), resolvingAgainstBaseURL: false) else {
-            return nil
-        }
-        
         //url parameters
         switch self {
             case .search:
+    
                 queryItems.append(URLQueryItem(name: "term", value: parameter))
                 queryItems.append(URLQueryItem(name: "country", value: country?.rawValue))
                 if let mediaType = media?.rawValue {
@@ -95,16 +85,7 @@ extension APIService {
             }
             default: break
         }
-        components.queryItems = queryItems
         
-        guard let url = components.url else {
-            return nil
-        }
-        
-        guard let encodedURL = url.encode() else {
-            fatalError("Unable to encode url")
-        }
-        
-        return URLRequest(url: encodedURL)
+        return try! asURLRequest(queryItems: queryItems) 
     }
 }
