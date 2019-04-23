@@ -49,16 +49,17 @@ private extension APIClient {
                     completion(.error(.responseUnsuccessful))
                     return
                 }
-                if 400 ... 499 ~= httpResponse.statusCode {
-                    completion(.error(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
-                } else if 500 ... 599 ~= httpResponse.statusCode {
-                    completion(.error(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
-                } else if 200 ... 299 ~= httpResponse.statusCode{
-                    guard let data = data else {
-                        completion(.error(.invalidData))
-                        return
-                    }
-                    completion(.success(data))
+                
+                switch httpResponse.statusCode {
+                    case 400...499: completion(.error(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
+                    case  500 ... 599 : completion(.error(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
+                    case 200 ... 299:
+                        guard let data = data else {
+                            completion(.error(.invalidData))
+                            return
+                        }
+                        completion(.success(data))
+                    default : break
                 }
             }
         })
