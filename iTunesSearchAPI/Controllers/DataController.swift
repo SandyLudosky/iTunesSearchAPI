@@ -29,8 +29,10 @@ extension DataController: DataControllerProtocol {
                     return
                 }
                 let searchResults = try? results.map({ dict -> Result in
-                    let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
-                    let result = try JSONDecoder().decode(Result.self, from: data!)
+                    guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
+                        throw ErrorHandler.invalidData
+                    }
+                    let result = try JSONDecoder().decode(Result.self, from: data)
                     print(result)
                     return result
                 })
@@ -51,8 +53,10 @@ extension DataController: DataControllerProtocol {
                     return
                 }
                 let searchResults = try? results.map({ dict -> Result in
-                    let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
-                    let result = try JSONDecoder().decode(Result.self, from: data!)
+                    guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
+                        throw ErrorHandler.invalidData
+                    }
+                    let result = try JSONDecoder().decode(Result.self, from: data)
                     print(result)
                     return result
                 })
