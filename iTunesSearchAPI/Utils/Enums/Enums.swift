@@ -14,12 +14,10 @@ public enum ResultType<T> {
     case dict([String: Any])
     case error(ErrorHandler)
 }
-
 public enum ResponseType {
     case success(Data)
     case failure(ErrorHandler)
 }
-
 public enum ResultObject<T> {
     case success(T) 
     case failure(ErrorHandler)

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 struct Styles {
     // MARK: UIButton
     struct Button {
@@ -16,7 +15,6 @@ struct Styles {
         static var highlighted: UIFont = Fonts.Roboto.bold.withSize(18.0)
         static var disabled: UIFont = Fonts.Roboto.bold.withSize(18.0)
     }
-    
     // MARK: UILabel
     struct Label {
         static var title: UIFont = Fonts.System.semibold.withSize(18.0)

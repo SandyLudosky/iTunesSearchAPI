@@ -22,8 +22,6 @@ import UIKit
 
 @IBDesignable
 open class Label: UILabel {
-    
-    // MARK: - Lifecycle
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         design()
@@ -33,33 +31,26 @@ open class Label: UILabel {
         super.init(frame: frame)
         design()
     }
-    
-    /// Initializes and returns a newly allocated view object from decoder.
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         design()
     }
-    // MARK: - Design
     open func design() {
         textColor = Color.info
         font = Styles.Label.title
     }
-  
 }
 
 @IBDesignable
 open class TitleLabel: Label {
-    // MARK: - Design
     open override func design() {
         textColor = Color.concreteColor
         font = Styles.Label.title
     }
 }
 
-
 @IBDesignable
 open class SubTitleLabel: Label {
-    // MARK: - Design
     open override func design() {
         textColor = Color.silverColor
         font = Styles.Label.subtitle

@@ -14,7 +14,6 @@ protocol ResultDetailsViewModelProtocol {
     func loadArtwork(completion: @escaping (UIImage?) -> Void)
     func loadPreview()
 }
-
 class ResultDetailsViewModel {
     let dataController = DataController()
     var result: Result?
@@ -41,7 +40,6 @@ extension ResultDetailsViewModel : ResultDetailsViewModelProtocol {
         loadPreview()
         completion()
     }
-    
     func loadPreview()  {
         if let preview = result?.previewURL {
             guard let url = URL(string: preview) else { return }

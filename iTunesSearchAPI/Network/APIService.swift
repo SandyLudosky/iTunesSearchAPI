@@ -8,7 +8,6 @@
 
 import Foundation
 
-//https://itunes.apple.com/search?parameterkeyvalue
 public enum APIService: APIProtocol {
     case search(term: String, country: Country?, media: MediaType?, entity: Entity?)
     case lookup(id: String, entity: Entity?) //for ID-based lookups artistID/AMG ArtistID/UPC/EANs...
@@ -28,7 +27,6 @@ public enum APIService: APIProtocol {
         }
     }
     
-    //either text or id
     public var parameter: String? {
         switch self {
         case .search(let term,_ ,_ ,_ ): return term
@@ -59,37 +57,33 @@ public enum APIService: APIProtocol {
         case .download: return nil
         }
     }
-    
 }
 
 extension APIService {
     public var request: URLRequest? {
         var queryItems = [URLQueryItem]()
-      
-        //url parameters
+        
         switch self {
-            case .search:
-    
-                queryItems.append(URLQueryItem(name: "term", value: parameter))
-                queryItems.append(URLQueryItem(name: "country", value: country?.rawValue))
-                if let mediaType = media?.rawValue {
-                     queryItems.append(URLQueryItem(name: "media", value: mediaType))
-                }
-                if let entityType = entity?.string {
-                     queryItems.append(URLQueryItem(name: "entity", value: entityType))
-                }
-            case .lookup:
-               queryItems.append(URLQueryItem(name: "id", value: parameter))
-               if let entityType = entity?.string {
+        case .search:
+            queryItems.append(URLQueryItem(name: "term", value: parameter))
+            queryItems.append(URLQueryItem(name: "country", value: country?.rawValue))
+            if let mediaType = media?.rawValue {
+                queryItems.append(URLQueryItem(name: "media", value: mediaType))
+            }
+            if let entityType = entity?.string {
                 queryItems.append(URLQueryItem(name: "entity", value: entityType))
             }
-            default: break
+        case .lookup:
+            queryItems.append(URLQueryItem(name: "id", value: parameter))
+            if let entityType = entity?.string {
+                queryItems.append(URLQueryItem(name: "entity", value: entityType))
+            }
+        default: break
         }
         
         guard let urlRequest = try? asURLRequest(queryItems: queryItems) else {
             return nil
         }
-    
         return urlRequest
     }
 }

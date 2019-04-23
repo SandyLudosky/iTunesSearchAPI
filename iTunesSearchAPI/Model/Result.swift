@@ -8,14 +8,14 @@
 
 import Foundation
 import UIKit
+
+//Enums
 public enum WrapperType {
     case track, collection, artist
 }
-
 public enum Explicitness {
     case explicit, cleaned, notExplicit
 }
-
 public enum Kind {
     case book, album, coachedAudio, featureMovie, interactiveBooklet, musicVideo, pdf, podcast, podcastEpisode, softwarePackage, song, tvEpisode, artist
 }
@@ -29,9 +29,7 @@ struct Result: Codable  {
     let kind: String
     var explicit: String?
     var wrapper: String?
-    //all non-required value are set as optional
-    //https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup
-    var artworkUrl100: String
+    var artworkUrl100: String?
     var artworkUrl60: String?
     var previewURL: String?
     var trackTimeMillis: Int?
@@ -39,7 +37,6 @@ struct Result: Codable  {
     var contentAdvisoryRating: String?
     var image: UIImage?
 }
-
 
 extension Result {
     enum CodingKeys: String, CodingKey {
@@ -64,7 +61,6 @@ extension Result {
         primaryGenreName = try values.decodeIfPresent(String.self, forKey: .primaryGenreName)
         contentAdvisoryRating = try values.decodeIfPresent(String.self, forKey: .contentAdvisoryRating)
     }
-    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(trackName, forKey: .trackName)
@@ -86,11 +82,9 @@ extension Result {
     var wrapperType: WrapperType {
         return .track
     }
-    
     var kindType: Kind {
         return .song
     }
-    
     var isExplicit: Bool {
         return false
     }

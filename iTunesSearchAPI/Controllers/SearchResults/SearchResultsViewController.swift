@@ -19,16 +19,15 @@ class SearchResultsViewController: UIViewController {
     var action: Action?
     
     lazy var dataSource: SearchResultDataSource? = {
-         guard let results = self.viewModel.data else { return nil }
+        guard let results = self.viewModel.data else { return nil }
         return SearchResultDataSource(items: results)
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         loadData()
     }
-    
     private func loadData() {
         viewModel.search(term: "eminem", country: .us, type: .music, entity: .music(.song)) { err in
             if err == nil {
@@ -39,7 +38,6 @@ class SearchResultsViewController: UIViewController {
             }
         }
     }
-    
     private func configureView() {
         let nib = UINib(nibName: "SearchCollectionViewCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
@@ -53,15 +51,12 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
     var isSeachBarEmpty: Bool {
         return searchController.searchBar.text == ""
     }
-    
     var seachBarText: String? {
         guard let text = searchController.searchBar.text else { return nil }
         return text
     }
-    
     private func configureSearchBar() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(SearchResultsViewController.dismissSearchResultsController))
-       
         self.navigationItem.rightBarButtonItem?.tintColor = Color.info
         searchController.searchResultsUpdater = self
         searchController.delegate = self
@@ -75,7 +70,6 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
         definesPresentationContext = true
         collectionViewHeader.backgroundColor = .lightGray
         collectionViewHeader.addSubview(self.searchController.searchBar)
-  
     }
     
     private func updateSearchResults() {
@@ -107,8 +101,6 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                 }
             }
         }
-        
-        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -116,12 +108,10 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
         self.viewModel.data = nil
         updateSearchResults()
     }
-    
     @objc func dismissSearchResultsController(_ sender: UIBarButtonItem) {
         searchActive = false
         self.dismiss(animated: true, completion: nil)
     }
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
     }
@@ -133,7 +123,7 @@ extension SearchResultsViewController: UICollectionViewDelegate {
         guard let currentCell = collectionView.cellForItem(at: indexPath) as? SearchCollectionViewCell else { return }
         let result = viewModel.data?[indexPath.row]
         if let _ = result?.previewURL {
-             performSegue(withIdentifier: "goToDetails", sender: currentCell)
+            performSegue(withIdentifier: "goToDetails", sender: currentCell)
         }
     }
 }
@@ -147,16 +137,13 @@ extension SearchResultsViewController {
                 assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
                 return
             }
-            
             guard let resultDetailsVC = segue.destination as? ResultDetailsViewController else {
                 assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
                 return
             }
-            
             guard let indexPath = collectionView.indexPath(for: cell) else {
                 return
             }
-            
             resultDetailsVC.result = dataSource?.result(at: indexPath)
         }
     }

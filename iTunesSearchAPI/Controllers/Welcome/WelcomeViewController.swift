@@ -10,7 +10,6 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     var action: Action?
-    
     @IBAction func selectionAction(_ sender: UIButton) {
         switch sender.tag {
             case 1: action = .search
@@ -19,12 +18,13 @@ class WelcomeViewController: UIViewController {
         }
         performSegue(withIdentifier: "goToSearch", sender: self)
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    // MARK: - Navigation
+}
+
+// MARK: - Navigation
+extension WelcomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSearch" {
             if let navController = segue.destination as? UINavigationController {

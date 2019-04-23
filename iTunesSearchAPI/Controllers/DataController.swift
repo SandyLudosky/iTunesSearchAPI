@@ -15,13 +15,11 @@ protocol DataControllerProtocol {
     func lookup(with id: String, entity: Entity?, completion: @escaping Handler)
     func download(with url: String, completion: @escaping DataHandler)
 }
-
 class DataController {
     let client = APIClient<APIService>()
 }
 
 extension DataController: DataControllerProtocol {
-    
     func search(for term: String, country: Country?, type: MediaType?, entity: Entity?, completion: @escaping Handler) {
         client.get(with: .search(term: term, country: country, media: type, entity: entity)) { results in
             switch results {
@@ -30,18 +28,16 @@ extension DataController: DataControllerProtocol {
                 guard let results = dict["results"] as? [[String : Any]] else {
                     return
                 }
-                
                 let searchResults = try? results.map({ dict -> Result in
                     let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
                     let result = try JSONDecoder().decode(Result.self, from: data!)
                     print(result)
                     return result
                 })
-                
                 DispatchQueue.main.async {
                     completion(.success(searchResults ?? []))
                 }
-              case .error(let reason): completion(.failure(reason))
+            case .error(let reason): completion(.failure(reason))
             }
         }
     }
@@ -54,18 +50,16 @@ extension DataController: DataControllerProtocol {
                 guard let results = dict["results"] as? [[String : Any]] else {
                     return
                 }
-                
                 let searchResults = try? results.map({ dict -> Result in
                     let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
                     let result = try JSONDecoder().decode(Result.self, from: data!)
                     print(result)
                     return result
                 })
-                
                 DispatchQueue.main.async {
                     completion(.success(searchResults ?? []))
                 }
-             case .error(let reason): completion(.failure(reason))
+            case .error(let reason): completion(.failure(reason))
             }
         }
     }

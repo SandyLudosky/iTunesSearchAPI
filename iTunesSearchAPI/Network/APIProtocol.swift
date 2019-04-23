@@ -17,10 +17,7 @@ public protocol APIProtocol {
     var request: URLRequest? { get }
 }
 
-
 extension APIProtocol {
-
-    // MARK: Public Methods
     func asURLRequest(queryItems: [URLQueryItem]) throws -> URLRequest? {
         
         //baseURL + endpoints
@@ -36,8 +33,6 @@ extension APIProtocol {
         let encodedURL = url.encode(),
         let request =  URLRequest(url: encodedURL) as? URLRequest
         else { throw ErrorHandler.invalidRequest }
-     
         return request
     }
-    
 }

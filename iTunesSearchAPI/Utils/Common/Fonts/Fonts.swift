@@ -8,67 +8,29 @@
 
 import UIKit
 
-/// This structure holds fonts available for the whole application.
 struct Fonts {
-    
-    /// Structure holding `Roboto` fonts
     struct Roboto {
-        
-        /// Regular `Roboto` font face.
         static var regular: UIFont = Fonts.font("Roboto-Regular")
-        
-        /// Black `Roboto` font face.
         static var black: UIFont = Fonts.font("Roboto-Black")
-        
-        /// Bold `Roboto` font face.
         static var bold: UIFont = Fonts.font("Roboto-Bold")
-        
-        /// Light `Roboto` font face.
         static var light: UIFont = Fonts.font("Roboto-Light")
-        
-        /// Medium `Roboto` font face.
         static var medium: UIFont = Fonts.font("Roboto-Medium")
-        
-        /// Thin `Roboto` font face.
         static var thin: UIFont = Fonts.font("Roboto-Thin")
         
-        /// Structure holding italic `Roboto` fonts
         struct Italic {
-            
-            /// Regular `Roboto` italic font face.
             static var regular: UIFont = Fonts.font("Roboto-Italic")
-            
-            /// Black `Roboto` italic font face.
             static var black: UIFont = Fonts.font("Roboto-BlackItalic")
-            
-            /// Bold `Roboto` italic font face.
             static var bold: UIFont = Fonts.font("Roboto-BoldItalic")
-            
-            /// Light `Roboto` italic font face.
             static var light: UIFont = Fonts.font("Roboto-LightItalic")
-            
-            /// Medium `Roboto` italic font face.
             static var medium: UIFont = Fonts.font("Roboto-MediumItalic")
-            
-            /// Thin `Roboto` italic font face.
             static var thin: UIFont = Fonts.font("Roboto-ThinItalic")
         }
     }
-    
-    /// Structure holding `HelveticNeue` fonts
     struct HelveticaNeue {
-        
-        /// Regular `HelveticaNeue` font face.
         static var regular: UIFont = Fonts.font("HelveticaNeue")
-        
     }
-    
-    /// Structure holding `System` fonts
     struct System {
-        
-        /// Semibold `System` italic font face.
         static var semibold: UIFont = Fonts.font(.semibold)
-        
     }
     
     /**

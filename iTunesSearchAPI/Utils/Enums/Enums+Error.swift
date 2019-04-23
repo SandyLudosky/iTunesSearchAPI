@@ -8,11 +8,9 @@
 
 import Foundation
 
-
 public enum StatusCode {
     case clientError, serverError
 }
-
 extension StatusCode {
     var description: String {
         switch self {
@@ -23,8 +21,6 @@ extension StatusCode {
 }
 
 // MARK: Error
-
-/// Enumeration listing `Oodrive` errors
 public enum ErrorHandler: Error {
     case unknownError
     case invalidData
@@ -39,11 +35,8 @@ public enum ErrorHandler: Error {
     case invalidURL
 }
 
-
 // MARK: - LocalizedError
 extension ErrorHandler: LocalizedError {
-    
-    /// A localized message describing what error occurred.
     public var errorDescription: String? {
         switch self {
         case .unknownError: return NSLocalizedString("Unknown error.", comment: "")
@@ -60,7 +53,6 @@ extension ErrorHandler: LocalizedError {
         }
     }
     
-    /// A localized message describing the reason for the failure.
     public var failureReason: String? {
         switch self {
         case .unknownError: return NSLocalizedString("Error code is not referenced.", comment: "")
@@ -77,7 +69,6 @@ extension ErrorHandler: LocalizedError {
         }
     }
     
-    /// A localized message describing how one might recover from the failure.
     public var recoverySuggestion: String? {
         switch self {
         case .unknownError: return NSLocalizedString("Please try later.", comment: "")
@@ -94,7 +85,6 @@ extension ErrorHandler: LocalizedError {
         }
     }
     
-    /// A localized message providing "help" text if the user requests help.
     public var helpAnchor: String? {
         switch self {
         case .unknownError: return NSLocalizedString("Please contact developer.", comment: "")

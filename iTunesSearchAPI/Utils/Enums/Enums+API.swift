@@ -11,11 +11,9 @@ import Foundation
 public enum Action {
     case search, lookUp
 }
-
 public enum Country: String {
     case france, us
 }
-
 public enum MediaType: String {
     case movie
     case podcast
@@ -28,7 +26,6 @@ public enum MediaType: String {
     case ebook
     case all
 }
-
 public enum Entity {
     case movie(Movie)
     case podcast(PodCast)
@@ -55,45 +52,35 @@ public enum Entity {
         case .all(let type): return type.rawValue
         }
     }
-
 }
 
 public enum Movie: String {
-   case movieArtist, movie
+    case movieArtist, movie
 }
-
 public enum PodCast: String {
     case podcastAuthor, podcast
 }
-
 public enum Music: String {
     case musicArtist, musicTrack, album, musicVideo, mix, song
 }
-
 public enum MusicVideo: String {
-   case musicArtist, musicVideo
+    case musicArtist, musicVideo
 }
-
 public enum AudioBook: String {
     case audiobookAuthor, audiobook
 }
-
 public enum ShortFilm: String {
     case shortFilmArtist, shortFilm
 }
-
 public enum TvShow: String {
     case tvEpisode, tvSeason
 }
-
 public enum Software: String {
     case software, iPadSoftware, macSoftware
 }
-
 public enum Ebook: String {
     case ebook
 }
-
 public enum All: String {
     case movie, album, allArtist, podcast, musicVideo, mix, audiobook, tvSeason, allTrack
 }

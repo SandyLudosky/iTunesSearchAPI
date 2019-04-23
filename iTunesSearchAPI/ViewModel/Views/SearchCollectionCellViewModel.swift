@@ -17,7 +17,6 @@ struct SearchCollectionCellViewModel {
     var image:UIImage?
     let dataController = DataController()
 }
-
 extension SearchCollectionCellViewModel {
     init(with result: Result) {
         self.name = result.trackName
@@ -25,7 +24,6 @@ extension SearchCollectionCellViewModel {
         self.previewURL = result.previewURL
         self.artwork = result.artworkUrl60
     }
-    
     func preview(with url: String, completion: @escaping (UIImage) -> Void) {
         dataController.download(with: url) { (data, error) in
             if error == nil {

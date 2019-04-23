@@ -13,7 +13,6 @@ class APIClient<T: APIProtocol> {
     public typealias ResultHandler = (ResultType<Any>) -> Void
     func get(with service: T, completion: @escaping ResultHandler) {
         let task = runTask(with: service) { response in
-            
             switch response {
             case .success(let data):
                 JSONParser.parse(data, completion: { results in
@@ -39,7 +38,6 @@ class APIClient<T: APIProtocol> {
 private extension APIClient {
     //handle response and data
     private func runTask(with service: APIProtocol, completion: @escaping ResponseHandler) -> URLSessionDataTask? {
-        print("URL : \(service.request!.url!)")
         guard let request = service.request else {
             return nil
         }
@@ -49,17 +47,16 @@ private extension APIClient {
                     completion(.failure(.responseUnsuccessful))
                     return
                 }
-                
                 switch httpResponse.statusCode {
-                    case 400...499: completion(.failure(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
-                    case  500 ... 599 : completion(.failure(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
-                    case 200 ... 299:
-                        guard let data = data else {
-                            completion(.failure(.invalidData))
-                            return
-                        }
-                        completion(.success(data))
-                    default : break
+                case 400...499: completion(.failure(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
+                case  500 ... 599 : completion(.failure(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
+                case 200 ... 299:
+                    guard let data = data else {
+                        completion(.failure(.invalidData))
+                        return
+                    }
+                    completion(.success(data))
+                default : break
                 }
             }
         })
