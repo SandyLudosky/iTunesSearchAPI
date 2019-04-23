@@ -67,6 +67,5 @@ extension ResultDetailsViewController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         loader.stopAnimating()
         print("did fail")
-        AlertDialogView.build(with: "error loading preview", vc: self)
     }
 }
