@@ -12,7 +12,7 @@ class JSONParser {
     typealias ParsingCompletionHandler = (ResultType<Any>) -> Void
     static func parse(_ data: Data, completion: @escaping ParsingCompletionHandler) {
         do {
-              completion(.data(data))
+            completion(.data(data))
             if let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 completion(.dict(dict))
             }

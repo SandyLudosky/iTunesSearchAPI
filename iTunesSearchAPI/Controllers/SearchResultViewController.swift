@@ -35,7 +35,7 @@ class SearchResultViewController: UIViewController {
                 self.collectionView.dataSource = self.dataSource
                 self.collectionView.reloadData()
             } else {
-                print("error = \(String(describing: error?.description))")
+                AlertDialogView.build(with: String(describing: error?.description), vc: self)
             }
         }
     }
@@ -77,13 +77,14 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func updateSearchResults() {
-        
         //action is either search with text or lookup with ID
         if !isSeachBarEmpty {
             if action == .search {
                 viewModel.search(term: seachBarText ?? "", country: .us, type: .music, entity: .music(.song)) { error in
                     if error == nil {
-                        guard let results = self.viewModel.data else { return }
+                        guard let results = self.viewModel.data else {
+                            return
+                        }
                         self.dataSource?.update(with: results)
                         self.collectionView.reloadData()
                     } else {
@@ -93,7 +94,9 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
             } else {
                 viewModel.lookup(with: seachBarText ?? "", entity: nil) { error in
                     if error == nil {
-                        guard let results = self.viewModel.data else { return }
+                        guard let results = self.viewModel.data else {
+                            return
+                        }
                         self.dataSource?.update(with: results)
                         self.collectionView.reloadData()
                     } else {
@@ -102,10 +105,13 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
                 }
             }
         }
+        
+        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         print(searchController.searchBar.text!)
+        self.viewModel.data = nil
         updateSearchResults()
     }
     

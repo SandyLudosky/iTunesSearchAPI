@@ -9,26 +9,51 @@
 import XCTest
 @testable import iTunesSearchAPI
 
-class iTunesSearchAPITests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+internal class SearchAPITests: XCTestCase  {
+     let client = APIClient<APIService>()
+     let dataController = DataController()
+
+    func testAPIService() {
+        let service = APIService.search(term: "eminem", country: nil, media: .music, entity: .music(.song))
+        XCTAssertTrue(service.request?.url == URL(string: "https://itunes.apple.com/search?term=eminem&country&media=music&entity=song"), "URL should be well formatted - see iTunesSearchAPI docs")
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testAPIServiceFail() {
+        let service = APIService.search(term: "madonna", country: nil, media: .music, entity: .music(.song))
+        XCTAssertTrue(service.request?.url != URL(string: "https://itunes.apple.com/search?"), "fatal error")
     }
+}
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+internal class DataControllerTests: XCTestCase  {
+    let client = APIClient<APIService>()
+    let dataController = DataController()
+    func testDataControllerResultsShouldSucceed() {
+        let service = APIService.search(term: "eminem", country: nil, media: .music, entity: .music(.song))
+        XCTAssertTrue(service.request?.url == URL(string: "https://itunes.apple.com/search?term=eminem&country&media=music&entity=song"), "URL should be well formatted - see iTunesSearchAPI docs")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testAPIServiceShouldSucceed() {
+        let service = APIService.search(term: "madonna", country: nil, media: .music, entity: .music(.song))
+        dataController.search(for: "madonna", country: .us, type: .music, entity: .music(.song)) { result in
+            switch result {
+            case .success(_):
+                XCTAssertTrue(true, "result should be success")
+            case .error(_):
+                XCTAssertTrue(false, "result should be success")
+            }
         }
     }
-
+    
+    func testAPIServiceShouldFail() {
+        let service = APIService.lookup(id: "34", entity: nil)
+        dataController.lookup(with:  "34", entity: nil, completion: { results in
+            switch results {
+            case .success(_):
+                XCTAssertTrue(false, "result should be success")
+            case .error(_):
+                XCTAssertTrue(true, "result should be error")
+            }
+        })
+    }
 }
