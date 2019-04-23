@@ -22,3 +22,10 @@ public enum ResultObject<T> {
     case success(T) 
     case failure(ErrorHandler)
 }
+
+public enum Action {
+    case search, lookUp
+}
+public enum Country: String {
+    case france, us
+}

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		370EA144226FABA800036D31 /* Enums+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370EA143226FABA800036D31 /* Enums+API.swift */; };
 		3778D565226DE50A005C5540 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D564226DE50A005C5540 /* AppDelegate.swift */; };
 		3778D56A226DE50A005C5540 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3778D568226DE50A005C5540 /* Main.storyboard */; };
 		3778D56C226DE50B005C5540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3778D56B226DE50B005C5540 /* Assets.xcassets */; };
@@ -67,7 +66,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		370EA143226FABA800036D31 /* Enums+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enums+API.swift"; sourceTree = "<group>"; };
 		3778D561226DE50A005C5540 /* iTunesSearchAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearchAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3778D564226DE50A005C5540 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3778D569226DE50A005C5540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -305,7 +303,6 @@
 		3778D5BB226F50ED005C5540 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				370EA143226FABA800036D31 /* Enums+API.swift */,
 				3778D5A7226DEABD005C5540 /* Enums.swift */,
 				3778D5AF226F1416005C5540 /* Enums+Error.swift */,
 				3778D5A9226DFECB005C5540 /* Extensions.swift */,
@@ -526,7 +523,6 @@
 				3778D5C7226F79E2005C5540 /* Fonts.swift in Sources */,
 				3778D5E9226F9C73005C5540 /* BaseViewController.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
-				370EA144226FABA800036D31 /* Enums+API.swift in Sources */,
 				3778D5EE226F9EDD005C5540 /* Entity.swift in Sources */,
 				3778D5B9226F5087005C5540 /* SearchResultsViewModel.swift in Sources */,
 				3778D5B0226F1416005C5540 /* Enums+Error.swift in Sources */,
