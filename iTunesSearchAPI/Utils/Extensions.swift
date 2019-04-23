@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension URL {
     func encode() -> URL? {
@@ -21,4 +22,5 @@ extension URL {
         return encodedURL
     }
 }
+
 

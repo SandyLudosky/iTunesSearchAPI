@@ -11,7 +11,6 @@ import UIKit
 class SearchResultsViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeader: UIView!
-    
     let viewModel = SearchResultsViewModel()
     let searchController = UISearchController(searchResultsController: nil)
     var data: [Result] = []
@@ -62,12 +61,6 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
         searchController.delegate = self
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false
-        if #available(iOS 9.1, *) {
-            searchController.obscuresBackgroundDuringPresentation = false
-        } else {
-            // Fallback on earlier versions
-            searchController.dimsBackgroundDuringPresentation = false
-        }
         searchController.searchBar.placeholder = action == .search ? "Search ..." : "LookUp with IDs"
         searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.barTintColor = .lightGray
@@ -75,13 +68,20 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
         definesPresentationContext = true
         collectionViewHeader.backgroundColor = .lightGray
         collectionViewHeader.addSubview(self.searchController.searchBar)
+        if #available(iOS 9.1, *) {
+            searchController.obscuresBackgroundDuringPresentation = false
+        } else {
+            // Fallback on earlier versions
+            searchController.dimsBackgroundDuringPresentation = false
+        }
     }
     
     private func updateSearchResults() {
-        //action is either search with text or lookup with ID
+        guard let option = action else { return }
         if !isSeachBarEmpty {
-            if action == .search {
-                //search example search(term: "eminem", mediaType: .music(entity: .mix, attribute: .mixTerm)
+            switch option {
+            //search example search(term: "eminem", mediaType: .music(entity: .mix, attribute: .mixTerm)
+            case .search:
                 viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .us, completion: { err in
                     if err == nil {
                         self.collectionView.dataSource = self.dataSource
@@ -90,7 +90,7 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                         AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
                     }
                 })
-            } else {
+            case .lookUp:
                 viewModel.lookup(with: seachBarText ?? "", entity: nil) { err in
                     if err == nil {
                         guard let results = self.viewModel.data else {
@@ -122,7 +122,6 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
 
 extension SearchResultsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("track selected \(String(describing: viewModel.data?[indexPath.row]))")
         guard let currentCell = collectionView.cellForItem(at: indexPath) as? SearchCollectionViewCell else { return }
         let result = viewModel.data?[indexPath.row]
         if let _ = result?.previewURL {
@@ -135,15 +134,14 @@ extension SearchResultsViewController: UICollectionViewDelegate {
 extension SearchResultsViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetails" {
-            
-            guard let cell = sender as? SearchCollectionViewCell else {
+            guard
+            let cell = sender as? SearchCollectionViewCell,
+            let resultDetailsVC = segue.destination as? ResultDetailsViewController
+                else {
                 assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
                 return
             }
-            guard let resultDetailsVC = segue.destination as? ResultDetailsViewController else {
-                assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
-                return
-            }
+        
             guard let indexPath = collectionView.indexPath(for: cell) else {
                 return
             }

@@ -235,6 +235,7 @@
 		3778D591226DE5F0005C5540 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3778D5A9226DFECB005C5540 /* Extensions.swift */,
 				3778D5BB226F50ED005C5540 /* Enums */,
 				3778D5B1226F4CD4005C5540 /* Common */,
 			);
@@ -305,7 +306,6 @@
 			children = (
 				3778D5A7226DEABD005C5540 /* Enums.swift */,
 				3778D5AF226F1416005C5540 /* Enums+Error.swift */,
-				3778D5A9226DFECB005C5540 /* Extensions.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
