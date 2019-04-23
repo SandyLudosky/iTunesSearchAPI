@@ -32,9 +32,12 @@ extension APIProtocol {
         components.queryItems = queryItems
         
         // encoded URL
-        guard let url = components.url, let encodedURL = url.encode() else { throw ErrorHandler.encodingError }
+        guard let url = components.url,
+        let encodedURL = url.encode(),
+        let request =  URLRequest(url: encodedURL) as? URLRequest
+        else { throw ErrorHandler.invalidRequest }
      
-        return URLRequest(url: encodedURL)
+        return request
     }
     
 }

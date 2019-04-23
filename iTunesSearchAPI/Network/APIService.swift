@@ -65,7 +65,7 @@ public enum APIService: APIProtocol {
 extension APIService {
     public var request: URLRequest? {
         var queryItems = [URLQueryItem]()
-       
+      
         //url parameters
         switch self {
             case .search:
@@ -86,6 +86,10 @@ extension APIService {
             default: break
         }
         
-        return try! asURLRequest(queryItems: queryItems) 
+        guard let urlRequest = try? asURLRequest(queryItems: queryItems) else {
+            return nil
+        }
+    
+        return urlRequest
     }
 }
