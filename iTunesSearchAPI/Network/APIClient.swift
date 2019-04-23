@@ -29,9 +29,8 @@ class APIClient<T: APIProtocol> {
                     }
                 })
             case .error(let error): completion(.error(error))
-            case .err(let err): completion(.error(err as! ErrorHandler))
             }
-           
+            
         }
         task?.resume()
     }
@@ -45,23 +44,21 @@ private extension APIClient {
             return nil
         }
         return URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            if let err = error {
-                completion(.err(err))  }
-            else {
+            if error == nil {
                 guard let httpResponse = response as? HTTPURLResponse else {
                     completion(.error(.responseUnsuccessful))
                     return
                 }
-                
-                if httpResponse.statusCode == 200 {
+                if 400 ... 499 ~= httpResponse.statusCode {
+                    completion(.error(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
+                } else if 500 ... 599 ~= httpResponse.statusCode {
+                    completion(.error(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
+                } else if 200 ... 299 ~= httpResponse.statusCode{
                     guard let data = data else {
                         completion(.error(.invalidData))
                         return
                     }
                     completion(.success(data))
-                } else {
-                    completion(.error(.responseFailure(statusCode: httpResponse.statusCode)))
                 }
             }
         })

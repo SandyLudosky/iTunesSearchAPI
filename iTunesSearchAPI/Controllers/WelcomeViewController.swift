@@ -9,7 +9,6 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-    
     var action: Action?
     
     @IBAction func selectionAction(_ sender: UIButton) {

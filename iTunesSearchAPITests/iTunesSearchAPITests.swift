@@ -33,7 +33,7 @@ internal class DataControllerTests: XCTestCase  {
         XCTAssertTrue(service.request?.url == URL(string: "https://itunes.apple.com/search?term=eminem&country&media=music&entity=song"), "URL should be well formatted - see iTunesSearchAPI docs")
     }
     
-    func testAPIServiceShouldSucceed() {
+    func testDataControllerResultsShouldFail() {
         let service = APIService.search(term: "madonna", country: nil, media: .music, entity: .music(.song))
         dataController.search(for: "madonna", country: .us, type: .music, entity: .music(.song)) { result in
             switch result {
@@ -44,6 +44,8 @@ internal class DataControllerTests: XCTestCase  {
             }
         }
     }
+    
+   
     
     func testAPIServiceShouldFail() {
         let service = APIService.lookup(id: "34", entity: nil)

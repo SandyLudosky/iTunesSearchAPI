@@ -30,12 +30,12 @@ class SearchResultViewController: UIViewController {
     }
     
     private func loadData() {
-        viewModel.search(term: "eminem", country: .us, type: .music, entity: .music(.song)) { error in
-            if error == nil {
+        viewModel.search(term: "eminem", country: .us, type: .music, entity: .music(.song)) { err in
+            if err == nil {
                 self.collectionView.dataSource = self.dataSource
                 self.collectionView.reloadData()
             } else {
-                AlertDialogView.build(with: String(describing: error?.description), vc: self)
+                AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
             }
         }
     }
@@ -80,27 +80,27 @@ extension SearchResultViewController: UISearchResultsUpdating, UISearchBarDelega
         //action is either search with text or lookup with ID
         if !isSeachBarEmpty {
             if action == .search {
-                viewModel.search(term: seachBarText ?? "", country: .us, type: .music, entity: .music(.song)) { error in
-                    if error == nil {
+                viewModel.search(term: seachBarText ?? "", country: .us, type: .music, entity: .music(.song)) { err in
+                    if err == nil {
                         guard let results = self.viewModel.data else {
                             return
                         }
                         self.dataSource?.update(with: results)
                         self.collectionView.reloadData()
                     } else {
-                         print("error = \(String(describing: error?.description))")
+                        print("error = \(String(describing: err?.errorDescription))")
                     }
                 }
             } else {
-                viewModel.lookup(with: seachBarText ?? "", entity: nil) { error in
-                    if error == nil {
+                viewModel.lookup(with: seachBarText ?? "", entity: nil) { err in
+                    if err == nil {
                         guard let results = self.viewModel.data else {
                             return
                         }
                         self.dataSource?.update(with: results)
                         self.collectionView.reloadData()
                     } else {
-                        print("error = \(String(describing: error?.description))")
+                        print("error = \(String(describing: err?.errorDescription))")
                     }
                 }
             }
