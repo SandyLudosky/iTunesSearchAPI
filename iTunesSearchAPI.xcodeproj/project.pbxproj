@@ -49,6 +49,7 @@
 		3778D5E0226F7A22005C5540 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3778D5D4226F7A22005C5540 /* Roboto-Italic.ttf */; };
 		3778D5E2226F7A63005C5540 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5E1226F7A63005C5540 /* Styles.swift */; };
 		3778D5E4226F8488005C5540 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5E3226F8488005C5540 /* Label.swift */; };
+		3778D5E9226F9C73005C5540 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5E8226F9C73005C5540 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		3778D5D4226F7A22005C5540 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		3778D5E1226F7A63005C5540 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		3778D5E3226F8488005C5540 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		3778D5E8226F9C73005C5540 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 		3778D58D226DE5C8005C5540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3778D5E7226F9C14005C5540 /* Base */,
 				3778D5B6226F4FA8005C5540 /* Welcome */,
 				3778D5B4226F4F86005C5540 /* SearchResults */,
 				3778D5B5226F4F98005C5540 /* ResultDetails */,
@@ -364,6 +367,14 @@
 			path = Roboto;
 			sourceTree = "<group>";
 		};
+		3778D5E7226F9C14005C5540 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3778D5E8226F9C73005C5540 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -491,6 +502,7 @@
 				3778D5A4226DE898005C5540 /* DataController.swift in Sources */,
 				3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */,
 				3778D5C7226F79E2005C5540 /* Fonts.swift in Sources */,
+				3778D5E9226F9C73005C5540 /* BaseViewController.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
 				3778D5B9226F5087005C5540 /* SearchResultsViewModel.swift in Sources */,
 				3778D5B0226F1416005C5540 /* Enums+Error.swift in Sources */,

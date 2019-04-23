@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ResultDetailsViewController: UIViewController {
+class ResultDetailsViewController: BaseViewController {
     
     @IBOutlet weak var resultImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
