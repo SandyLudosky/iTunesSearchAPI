@@ -18,6 +18,8 @@ public class Color: NSObject {
     static let primaryColor: UIColor = UIColor(red: 0.154, green: 0.427, blue: 0.685, alpha: 1.000)
     static let secondaryColor: UIColor = UIColor(red: 0.351, green: 0.819, blue: 0.631, alpha: 1.000)
     static let tertiaryColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+    static let concreteColor: UIColor = UIColor(red: 0.584, green: 0.647, blue: 0.650, alpha: 1.000)
+    static let silverColor: UIColor = UIColor(red: 0.741, green: 0.764, blue: 0.780, alpha: 1.000)
 }
 
 private extension UIColor {

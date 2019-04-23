@@ -19,7 +19,7 @@ struct Styles {
     
     // MARK: UILabel
     struct Label {
-        static var title: UIFont = Fonts.System.semibold.withSize(15.0)
-        static var subtitle: UIFont = Fonts.System.semibold.withSize(12.0)
+        static var title: UIFont = Fonts.System.semibold.withSize(18.0)
+        static var subtitle: UIFont = Fonts.System.semibold.withSize(15.0)
     }
 }

@@ -61,6 +61,8 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
     
     private func configureSearchBar() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(SearchResultsViewController.dismissSearchResultsController))
+       
+        self.navigationItem.rightBarButtonItem?.tintColor = Color.info
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.searchBar.delegate = self
