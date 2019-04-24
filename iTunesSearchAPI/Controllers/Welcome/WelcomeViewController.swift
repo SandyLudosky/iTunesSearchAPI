@@ -14,7 +14,7 @@ class WelcomeViewController: UIViewController {
         switch sender.tag {
             case 1: action = .search
             case 2: action = .lookUp
-            default:  action = .search
+            default: break
         }
         performSegue(withIdentifier: "goToSearch", sender: self)
     }

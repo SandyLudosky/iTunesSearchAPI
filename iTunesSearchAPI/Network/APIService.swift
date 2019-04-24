@@ -39,19 +39,14 @@ extension APIService {
             
             if let media = media {
                 queryItems.append(URLQueryItem(name: "media", value: media.description))
-                
                 if let entityQueryItem = media.entityQueryItem {
                     queryItems.append(entityQueryItem)
                     print(entityQueryItem)
                 }
-                
-            
                 if let attributeQueryItem = media.attributeQueryItem {
                     queryItems.append(attributeQueryItem)
-                       print(attributeQueryItem)
+                    print(attributeQueryItem)
                 }
-                
-              
             }
         case .lookup(let id, let entity):
             queryItems.append(URLQueryItem(name: "id", value: id))

@@ -82,9 +82,12 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
             switch option {
             //search example search(term: "eminem", mediaType: .music(entity: .mix, attribute: .mixTerm)
             case .search:
-                viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .unitedKingdom, completion: { err in
+                viewModel.search(term: seachBarText ?? "", mediaType: .music(entity: .song, attribute: nil), country: .unitedStates, completion: { err in
                     if err == nil {
-                        self.collectionView.dataSource = self.dataSource
+                        guard let results = self.viewModel.data else {
+                            return
+                        }
+                        self.dataSource?.update(with: results)
                         self.collectionView.reloadData()
                     } else {
                         AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
@@ -99,7 +102,7 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                         self.dataSource?.update(with: results)
                         self.collectionView.reloadData()
                     } else {
-                        print("error = \(String(describing: err?.errorDescription))")
+                        AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
                     }
                 }
             }
@@ -107,8 +110,6 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text!)
-        self.viewModel.data = nil
         updateSearchResults()
     }
     @objc func dismissSearchResultsController(_ sender: UIBarButtonItem) {
@@ -125,7 +126,7 @@ extension SearchResultsViewController: UICollectionViewDelegate {
         guard let currentCell = collectionView.cellForItem(at: indexPath) as? SearchCollectionViewCell else { return }
         let result = viewModel.data?[indexPath.row]
         if let _ = result?.previewURL {
-            performSegue(withIdentifier: "goToDetails", sender: currentCell)
+            performSegue(withIdentifier: "goToDetails", sender: currentCell) // segue only if preview is available
         }
     }
 }
@@ -141,7 +142,6 @@ extension SearchResultsViewController {
                 assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
                 return
             }
-        
             guard let indexPath = collectionView.indexPath(for: cell) else {
                 return
             }

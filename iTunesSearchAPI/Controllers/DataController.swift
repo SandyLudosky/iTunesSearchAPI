@@ -32,9 +32,7 @@ extension DataController: DataControllerProtocol {
                     guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
                         throw ErrorHandler.invalidData
                     }
-                    let result = try JSONDecoder().decode(Result.self, from: data)
-                    print(result)
-                    return result
+                   return try JSONDecoder().decode(Result.self, from: data)
                 })
                 DispatchQueue.main.async {
                     completion(.success(searchResults ?? []))
@@ -56,9 +54,7 @@ extension DataController: DataControllerProtocol {
                     guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
                         throw ErrorHandler.invalidData
                     }
-                    let result = try JSONDecoder().decode(Result.self, from: data)
-                    print(result)
-                    return result
+                    return try JSONDecoder().decode(Result.self, from: data)
                 })
                 DispatchQueue.main.async {
                     completion(.success(searchResults ?? []))
@@ -76,8 +72,7 @@ extension DataController: DataControllerProtocol {
                 if let dataValid = data as? Data {
                     _ = completion(dataValid, nil)
                 }
-            case .error(let err):
-                completion(nil, err)
+            case .error(let reason): completion(nil, reason)
             }
         }
     }
