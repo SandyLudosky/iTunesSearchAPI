@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		370EA146226FC29600036D31 /* Enums+Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370EA145226FC29600036D31 /* Enums+Country.swift */; };
+		370EA149227051C200036D31 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370EA148227051C200036D31 /* BaseViewModel.swift */; };
 		3778D565226DE50A005C5540 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D564226DE50A005C5540 /* AppDelegate.swift */; };
 		3778D56A226DE50A005C5540 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3778D568226DE50A005C5540 /* Main.storyboard */; };
 		3778D56C226DE50B005C5540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3778D56B226DE50B005C5540 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		370EA145226FC29600036D31 /* Enums+Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enums+Country.swift"; sourceTree = "<group>"; };
+		370EA148227051C200036D31 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		3778D561226DE50A005C5540 /* iTunesSearchAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearchAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3778D564226DE50A005C5540 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3778D569226DE50A005C5540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		370EA147227051AF00036D31 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				370EA148227051C200036D31 /* BaseViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		3778D558226DE509005C5540 = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +218,7 @@
 		3778D58E226DE5D4005C5540 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				370EA147227051AF00036D31 /* Base */,
 				3778D5BA226F50C4005C5540 /* Views */,
 				3778D5B7226F4FB6005C5540 /* SearchResults */,
 				3778D5BE226F51A5005C5540 /* ResultDetails */,
@@ -522,6 +533,7 @@
 				3778D5E4226F8488005C5540 /* Label.swift in Sources */,
 				3778D5A6226DEA94005C5540 /* WelcomeViewController.swift in Sources */,
 				3778D5A4226DE898005C5540 /* DataController.swift in Sources */,
+				370EA149227051C200036D31 /* BaseViewModel.swift in Sources */,
 				3778D59E226DE7CA005C5540 /* SearchResultDataSource.swift in Sources */,
 				3778D5C7226F79E2005C5540 /* Fonts.swift in Sources */,
 				3778D5E9226F9C73005C5540 /* BaseViewController.swift in Sources */,

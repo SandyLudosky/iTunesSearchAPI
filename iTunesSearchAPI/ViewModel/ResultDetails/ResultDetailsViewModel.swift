@@ -16,14 +16,14 @@ protocol ResultDetailsViewModelProtocol {
 }
 class ResultDetailsViewModel {
     let dataController = DataController()
-    var result: Result?
+    var data: Result?
     var request: URLRequest?
     var artwork: UIImage?
 }
 
 extension ResultDetailsViewModel : ResultDetailsViewModelProtocol {
     func loadArtwork(completion: @escaping (UIImage?) -> Void) {
-        guard let artwork = result?.artworkUrl60 else { return }
+        guard let artwork = data?.artworkUrl60 else { return }
         dataController.download(with: artwork ) { (data, error) in
             if error == nil {
                 guard let imageData = data else { return }
@@ -36,12 +36,12 @@ extension ResultDetailsViewModel : ResultDetailsViewModelProtocol {
     }
     
     func displayDetails(with r: Result, completion: () -> Void) {
-        result = r
+        data = r
         loadPreview()
         completion()
     }
     func loadPreview()  {
-        if let preview = result?.previewURL {
+        if let preview = data?.previewURL {
             guard let url = URL(string: preview) else { return }
             request = URLRequest(url: url)
         }
