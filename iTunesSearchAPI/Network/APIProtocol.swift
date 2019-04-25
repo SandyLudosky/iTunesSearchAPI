@@ -31,7 +31,6 @@ extension APIProtocol {
         let request =  URLRequest(url: encodedURL) as? URLRequest
         else { throw ErrorHandler.invalidRequest }
         
-        print("URL: \(request.url)")
         return request
     }
 }

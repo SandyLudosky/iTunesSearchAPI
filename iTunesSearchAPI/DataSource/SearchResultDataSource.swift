@@ -24,17 +24,17 @@ class SearchResultDataSource: NSObject {
     }
 }
 
-// MARK: - UICollectionViewDataSource
-extension SearchResultDataSource: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+// MARK: - UITableDataSource
+extension SearchResultDataSource: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else {
-            return UICollectionViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.identifier, for: indexPath) as? SearchResultTableViewCell else {
+            return UITableViewCell()
         }
         let result = results[indexPath.row]
-        let viewModel = SearchCollectionCellViewModel(with: result)
+        let viewModel = SearchCellViewModel(with: result)
         cell.configure(with: viewModel)
         return cell
     }

@@ -10,66 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search Results View Controller-->
-        <scene sceneID="Hq8-1l-mma">
-            <objects>
-                <viewController id="1vw-B0-3nO" customClass="SearchResultsViewController" customModule="iTunesSearchAPI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uQo-1p-Glw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zz6-Vy-238">
-                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="1hx-BN-ZCq"/>
-                                </constraints>
-                            </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FzN-8e-6Q7">
-                                <rect key="frame" x="0.0" y="134" width="375" height="533"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qRT-mA-6px">
-                                    <size key="itemSize" width="120" height="120"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchIdentifier" id="34O-pl-npi" customClass="SearchCollectionViewCell" customModule="iTunesSearchAPI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="hJI-6h-tbP" kind="show" identifier="goToDetails" id="FOf-t0-YaK"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="zz6-Vy-238" firstAttribute="top" secondItem="1eu-Yl-ajI" secondAttribute="top" id="D7H-2Q-3O1"/>
-                            <constraint firstItem="1eu-Yl-ajI" firstAttribute="bottom" secondItem="FzN-8e-6Q7" secondAttribute="bottom" id="MDp-Vp-HeE"/>
-                            <constraint firstItem="1eu-Yl-ajI" firstAttribute="trailing" secondItem="zz6-Vy-238" secondAttribute="trailing" id="VcC-gg-4Ce"/>
-                            <constraint firstItem="1eu-Yl-ajI" firstAttribute="trailing" secondItem="FzN-8e-6Q7" secondAttribute="trailing" id="YwR-4s-2vz"/>
-                            <constraint firstItem="FzN-8e-6Q7" firstAttribute="leading" secondItem="1eu-Yl-ajI" secondAttribute="leading" id="Z95-Gk-I9W"/>
-                            <constraint firstItem="FzN-8e-6Q7" firstAttribute="top" secondItem="zz6-Vy-238" secondAttribute="bottom" constant="10" id="e8b-Na-iCL"/>
-                            <constraint firstItem="zz6-Vy-238" firstAttribute="leading" secondItem="1eu-Yl-ajI" secondAttribute="leading" id="ttD-Kq-Jry"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="1eu-Yl-ajI"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="zjM-vo-qxW"/>
-                    <connections>
-                        <outlet property="collectionView" destination="FzN-8e-6Q7" id="bWf-Ho-31c"/>
-                        <outlet property="collectionViewHeader" destination="zz6-Vy-238" id="YMJ-T4-iAJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lj6-ZA-1az" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2684" y="-94"/>
-        </scene>
         <!--Result Details View Controller-->
         <scene sceneID="8CK-e5-ztL">
             <objects>
@@ -213,7 +153,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1vw-B0-3nO" kind="relationship" relationship="rootViewController" id="yp1-MD-9hE"/>
+                        <segue destination="HUQ-NI-WCG" kind="relationship" relationship="rootViewController" id="3kc-30-r5q"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iS5-lL-Ej3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -224,6 +164,50 @@
                 </stackView>
             </objects>
             <point key="canvasLocation" x="1870" y="-94"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="165-SD-wPw">
+            <objects>
+                <viewController id="HUQ-NI-WCG" customClass="SearchResultsViewController" customModule="iTunesSearchAPI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XmO-eY-V3u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hfN-8i-BTb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchIdentifier" id="RQb-RI-mLN" customClass="SearchResultTableViewCell" customModule="iTunesSearchAPI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RQb-RI-mLN" id="cMe-nt-SSA">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="hJI-6h-tbP" kind="show" identifier="goToDetails" id="n2I-vA-zXF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Fz-RE-4Kq" firstAttribute="trailing" secondItem="hfN-8i-BTb" secondAttribute="trailing" id="4OC-Ke-ZcE"/>
+                            <constraint firstItem="hfN-8i-BTb" firstAttribute="leading" secondItem="5Fz-RE-4Kq" secondAttribute="leading" id="Y2E-Jk-pbW"/>
+                            <constraint firstItem="5Fz-RE-4Kq" firstAttribute="bottom" secondItem="hfN-8i-BTb" secondAttribute="bottom" id="aZ4-xV-kFl"/>
+                            <constraint firstItem="hfN-8i-BTb" firstAttribute="top" secondItem="5Fz-RE-4Kq" secondAttribute="top" id="vM7-Zt-UcF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Fz-RE-4Kq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bPb-mX-rS6"/>
+                    <connections>
+                        <outlet property="tableView" destination="hfN-8i-BTb" id="SkC-yf-x90"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vt8-l1-Orj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2633" y="-97"/>
         </scene>
     </scenes>
 </document>

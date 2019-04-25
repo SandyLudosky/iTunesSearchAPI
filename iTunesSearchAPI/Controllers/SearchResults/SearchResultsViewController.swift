@@ -9,18 +9,14 @@
 import UIKit
 
 class SearchResultsViewController: BaseViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionViewHeader: UIView!
+    @IBOutlet var tableView: UITableView!
     let viewModel = SearchResultsViewModel()
     let searchController = UISearchController(searchResultsController: nil)
     var data: [Result] = []
     var searchActive : Bool = false
     var action: Action?
     
-    lazy var dataSource: SearchResultDataSource? = {
-        guard let results = self.viewModel.data else { return nil }
-        return SearchResultDataSource(items: results)
-    }()
+    var dataSource = SearchResultDataSource(items: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +24,22 @@ class SearchResultsViewController: BaseViewController {
         loadData()
     }
     private func loadData() {
+      
+        self.tableView.dataSource = dataSource
         viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .unitedStates, completion: { err in
             if err == nil {
-                self.collectionView.dataSource = self.dataSource
-                self.collectionView.reloadData()
+                guard let results = self.viewModel.data else { return  }
+                self.dataSource.update(with: results)
+                self.tableView.reloadData()
             } else {
                 AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
             }
         })
     }
     private func configureView() {
-        let nib = UINib(nibName: "SearchCollectionViewCell", bundle: nil)
-        collectionView?.register(nib, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
-        collectionView.delegate = self
-        configureSearchBar()
+        tableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: SearchResultTableViewCell.identifier)
+        configureSearchBarForTableView()
+        tableView.delegate = self
     }
 }
 
@@ -54,26 +52,24 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
         guard let text = searchController.searchBar.text else { return nil }
         return text
     }
-    private func configureSearchBar() {
+    
+    private func configureSearchBarForTableView() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(SearchResultsViewController.dismissSearchResultsController))
-        self.navigationItem.rightBarButtonItem?.tintColor = Color.info
-        searchController.searchResultsUpdater = self
-        searchController.delegate = self
-        searchController.searchBar.delegate = self
+        
+        tableView.tableHeaderView = searchController.searchBar
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = action == .search ? "Search ..." : "LookUp with IDs"
-        searchController.searchBar.becomeFirstResponder()
-        searchController.searchBar.barTintColor = .lightGray
-        searchController.searchBar.setBackgroundImage(UIImage(), for: .top, barMetrics: .default)
-        definesPresentationContext = true
-        collectionViewHeader.backgroundColor = .lightGray
-        collectionViewHeader.addSubview(self.searchController.searchBar)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.delegate = self
+        
         if #available(iOS 9.1, *) {
             searchController.obscuresBackgroundDuringPresentation = false
         } else {
             // Fallback on earlier versions
             searchController.dimsBackgroundDuringPresentation = false
         }
+        definesPresentationContext = true
     }
     
     private func updateSearchResults() {
@@ -87,8 +83,8 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                         guard let results = self.viewModel.data else {
                             return
                         }
-                        self.dataSource?.update(with: results)
-                        self.collectionView.reloadData()
+                        self.dataSource.update(with: results)
+                        self.tableView.reloadData()
                     } else {
                         AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
                     }
@@ -99,8 +95,8 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                         guard let results = self.viewModel.data else {
                             return
                         }
-                        self.dataSource?.update(with: results)
-                        self.collectionView.reloadData()
+                        self.dataSource.update(with: results)
+                        self.tableView.reloadData()
                     } else {
                         AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
                     }
@@ -121,9 +117,9 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
     }
 }
 
-extension SearchResultsViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let currentCell = collectionView.cellForItem(at: indexPath) as? SearchCollectionViewCell else { return }
+extension SearchResultsViewController: UITableViewDelegate {
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let currentCell = tableView.cellForRow(at: indexPath) as? SearchResultTableViewCell else { return }
         let result = viewModel.data?[indexPath.row]
         if let _ = result?.previewURL {
             performSegue(withIdentifier: "goToDetails", sender: currentCell) // segue only if preview is available
@@ -136,16 +132,16 @@ extension SearchResultsViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetails" {
             guard
-            let cell = sender as? SearchCollectionViewCell,
+            let cell = sender as? SearchResultTableViewCell,
             let resultDetailsVC = segue.destination as? ResultDetailsViewController
                 else {
                 assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
                 return
             }
-            guard let indexPath = collectionView.indexPath(for: cell) else {
+            guard let indexPath = tableView.indexPath(for: cell) else {
                 return
             }
-            resultDetailsVC.result = dataSource?.result(at: indexPath)
+            resultDetailsVC.result = dataSource.result(at: indexPath)
         }
     }
 }
