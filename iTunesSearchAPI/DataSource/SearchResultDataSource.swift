@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 class SearchResultDataSource: NSObject {
-    private var results: [Result]
-    init(items: [Result]) {
+    private var results: [ResultViewModel]
+    init(items: [ResultViewModel]) {
         self.results = items
         super.init()
     }
     // MARK: - Helper
-    func update(with data: [Result]) {
+    func update(with data: [ResultViewModel]) {
         results = data
     }
-    func result(at indexPath: IndexPath) -> Result {
+    func result(at indexPath: IndexPath) -> ResultViewModel {
         return results[indexPath.row]
     }
 }

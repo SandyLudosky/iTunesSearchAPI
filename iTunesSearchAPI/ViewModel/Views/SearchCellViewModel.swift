@@ -18,11 +18,11 @@ struct SearchCellViewModel {
     let dataController = DataController()
 }
 extension SearchCellViewModel {
-    init(with result: Result) {
+    init(with result: ResultViewModel) {
         self.name = result.trackName
         self.artist = result.artistName
         self.previewURL = result.previewURL
-        self.artwork = result.artworkUrl60
+        self.artwork = result.artwork
     }
     func preview(with url: String, completion: @escaping (UIImage) -> Void) {
         dataController.download(with: url) { (data, error) in

@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iTunesSearchAPI/DataSource/SearchResultDataSource.swift"
-            timestampString = "577923558.3143311"
+            timestampString = "578246247.754065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -38,11 +38,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "iTunesSearchAPI.SearchResultDataSource.__allocating_init(items: Swift.Array&lt;iTunesSearchAPI.Result&gt;) -&gt; iTunesSearchAPI.SearchResultDataSource"
+                  symbolName = "iTunesSearchAPI.SearchResultDataSource.__allocating_init(items: Swift.Array&lt;iTunesSearchAPI.ResultViewModel&gt;) -&gt; iTunesSearchAPI.SearchResultDataSource"
                   moduleName = "iTunesSearchAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/s.ludosky/Documents/projects/tests-tech/iTunesSearchAPI/iTunesSearchAPI/DataSource/SearchResultDataSource.swift"
-                  timestampString = "577922586.957522"
+                  timestampString = "578246247.895624"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -53,16 +53,128 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "iTunesSearchAPI.SearchResultDataSource.init(items: Swift.Array&lt;iTunesSearchAPI.Result&gt;) -&gt; iTunesSearchAPI.SearchResultDataSource"
+                  symbolName = "iTunesSearchAPI.SearchResultDataSource.init(items: Swift.Array&lt;iTunesSearchAPI.ResultViewModel&gt;) -&gt; iTunesSearchAPI.SearchResultDataSource"
                   moduleName = "iTunesSearchAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/s.ludosky/Documents/projects/tests-tech/iTunesSearchAPI/iTunesSearchAPI/DataSource/SearchResultDataSource.swift"
-                  timestampString = "577922586.968111"
+                  timestampString = "578246247.900158"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
                   endingLineNumber = "15"
                   offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iTunesSearchAPI/Module/SearchResults/View/SearchResultsViewController.swift"
+            timestampString = "578246247.75415"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "loadData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iTunesSearchAPI.SearchResultsViewController.(loadData in _D947B844458D11E6032E78B45E49DEB9)() -&gt; ()"
+                  moduleName = "iTunesSearchAPI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s.ludosky/Documents/projects/tests-tech/iTunesSearchAPI/iTunesSearchAPI/Module/SearchResults/View/SearchResultsViewController.swift"
+                  timestampString = "578246247.911377"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;iTunesSearchAPI.ResultViewModel&gt;&gt;, Swift.Optional&lt;iTunesSearchAPI.ErrorHandler&gt;) -&gt; () in iTunesSearchAPI.SearchResultsViewController.(loadData in _D947B844458D11E6032E78B45E49DEB9)() -&gt; ()"
+                  moduleName = "iTunesSearchAPI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s.ludosky/Documents/projects/tests-tech/iTunesSearchAPI/iTunesSearchAPI/Module/SearchResults/View/SearchResultsViewController.swift"
+                  timestampString = "578246247.913473"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "53">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iTunesSearchAPI/Module/SearchResults/Interactor/SearchResultsInteractor.swift"
+            timestampString = "578246247.754532"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "getResults(with:mediaType:country:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iTunesSearchAPI/Controllers/DataController.swift"
+            timestampString = "578246247.754581"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "search(for:mediaType:country:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iTunesSearchAPI.DataController.search(for: Swift.String, mediaType: Swift.Optional&lt;iTunesSearchAPI.Media&gt;, country: Swift.Optional&lt;iTunesSearchAPI.Country&gt;, completion: (iTunesSearchAPI.ResultObject&lt;Any&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "iTunesSearchAPI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s.ludosky/Documents/projects/tests-tech/iTunesSearchAPI/iTunesSearchAPI/Controllers/DataController.swift"
+                  timestampString = "578246247.925946"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "82">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (iTunesSearchAPI.ResultType&lt;Any&gt;) -&gt; () in iTunesSearchAPI.DataController.search(for: Swift.String, mediaType: Swift.Optional&lt;iTunesSearchAPI.Media&gt;, country: Swift.Optional&lt;iTunesSearchAPI.Country&gt;, completion: (iTunesSearchAPI.ResultObject&lt;Any&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "iTunesSearchAPI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s.ludosky/Documents/projects/tests-tech/iTunesSearchAPI/iTunesSearchAPI/Controllers/DataController.swift"
+                  timestampString = "578246247.930056"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "67">
                </Location>
             </Locations>
          </BreakpointContent>

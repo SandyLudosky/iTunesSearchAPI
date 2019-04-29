@@ -15,20 +15,21 @@ class SearchResultsViewController: BaseViewController {
     var data: [Result] = []
     var searchActive : Bool = false
     var action: Action?
+    var presenter: SearchResultsPresenterProtocol?
     
     var dataSource = SearchResultDataSource(items: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        setup()
         loadData()
     }
     private func loadData() {
-      
         self.tableView.dataSource = dataSource
-        viewModel.search(term: "eminem", mediaType: .music(entity: .song, attribute: nil), country: .unitedStates, completion: { err in
+        presenter?.showResults(with:  "eminem", mediaType:  .music(entity: .song, attribute: nil), country: .unitedStates, { (resultsViewModel, err) in
             if err == nil {
-                guard let results = self.viewModel.data else { return  }
+                guard let results =  resultsViewModel else { return  }
                 self.dataSource.update(with: results)
                 self.tableView.reloadData()
             } else {
@@ -43,6 +44,19 @@ class SearchResultsViewController: BaseViewController {
     }
 }
 
+extension SearchResultsViewController: SearchResultsViewProtocol {
+    func setup() {
+        let viewController = self
+        let presenter = SearchResultsPresenter()
+        let interactor = SearchResultsInteractor()
+        let router = SearchResultsRouter()
+        
+        viewController.presenter = presenter
+        presenter.interactor = interactor
+        presenter.router = router
+        router.viewController = self
+    }
+}
 //MARK: UISearchBarDelegate & UISearchResultsUpdating & UISearchControllerDelegate
 extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     var isSeachBarEmpty: Bool {
@@ -83,7 +97,7 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                         guard let results = self.viewModel.data else {
                             return
                         }
-                        self.dataSource.update(with: results)
+                       // self.dataSource.update(with: results)
                         self.tableView.reloadData()
                     } else {
                         AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
@@ -95,7 +109,7 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                         guard let results = self.viewModel.data else {
                             return
                         }
-                        self.dataSource.update(with: results)
+                       // self.dataSource.update(with: results)
                         self.tableView.reloadData()
                     } else {
                         AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
@@ -141,7 +155,7 @@ extension SearchResultsViewController {
             guard let indexPath = tableView.indexPath(for: cell) else {
                 return
             }
-            resultDetailsVC.result = dataSource.result(at: indexPath)
+            //resultDetailsVC.result = dataSource.result(at: indexPath)
         }
     }
 }

@@ -27,7 +27,7 @@ struct Result: Codable  {
     let censoredName: String
     var viewURL: String
     let kind: String
-    var explicit: String?
+    var explicit: String? 
     var wrapper: String?
     var artworkUrl100: String?
     var artworkUrl60: String?

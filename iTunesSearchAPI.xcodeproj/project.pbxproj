@@ -11,6 +11,11 @@
 		370EA149227051C200036D31 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370EA148227051C200036D31 /* BaseViewModel.swift */; };
 		370EA14C22721C9300036D31 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370EA14A22721C9300036D31 /* SearchResultTableViewCell.swift */; };
 		370EA14D22721C9300036D31 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370EA14B22721C9300036D31 /* SearchResultTableViewCell.xib */; };
+		37314B25227739FA0014CC35 /* SearchResultsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37314B24227739FA0014CC35 /* SearchResultsProtocols.swift */; };
+		37314B2722773A9B0014CC35 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37314B2622773A9B0014CC35 /* ResultViewModel.swift */; };
+		37314B29227746250014CC35 /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37314B28227746250014CC35 /* SearchResultsPresenter.swift */; };
+		37314B2B227746390014CC35 /* SearchResultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37314B2A227746390014CC35 /* SearchResultsInteractor.swift */; };
+		37314B2D2277464C0014CC35 /* SearchResultsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37314B2C2277464C0014CC35 /* SearchResultsRouter.swift */; };
 		3778D565226DE50A005C5540 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D564226DE50A005C5540 /* AppDelegate.swift */; };
 		3778D56A226DE50A005C5540 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3778D568226DE50A005C5540 /* Main.storyboard */; };
 		3778D56C226DE50B005C5540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3778D56B226DE50B005C5540 /* Assets.xcassets */; };
@@ -72,6 +77,11 @@
 		370EA148227051C200036D31 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		370EA14A22721C9300036D31 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		370EA14B22721C9300036D31 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
+		37314B24227739FA0014CC35 /* SearchResultsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsProtocols.swift; sourceTree = "<group>"; };
+		37314B2622773A9B0014CC35 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		37314B28227746250014CC35 /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
+		37314B2A227746390014CC35 /* SearchResultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsInteractor.swift; sourceTree = "<group>"; };
+		37314B2C2277464C0014CC35 /* SearchResultsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsRouter.swift; sourceTree = "<group>"; };
 		3778D561226DE50A005C5540 /* iTunesSearchAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearchAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3778D564226DE50A005C5540 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3778D569226DE50A005C5540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -157,6 +167,84 @@
 			path = SearchResultTableViewCell;
 			sourceTree = "<group>";
 		};
+		37314B1B227726A50014CC35 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				37314B1D227726BB0014CC35 /* ResultDetails */,
+				37314B1C227726AE0014CC35 /* SearchResults */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		37314B1C227726AE0014CC35 /* SearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				37314B1E227726EE0014CC35 /* View */,
+				37314B1F227726F30014CC35 /* Interactor */,
+				37314B20227739160014CC35 /* Presenter */,
+				37314B212277393B0014CC35 /* Entity */,
+				37314B22227739530014CC35 /* Router */,
+				37314B23227739A00014CC35 /* Protocols */,
+			);
+			path = SearchResults;
+			sourceTree = "<group>";
+		};
+		37314B1D227726BB0014CC35 /* ResultDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ResultDetails;
+			sourceTree = "<group>";
+		};
+		37314B1E227726EE0014CC35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3778D59B226DE79A005C5540 /* SearchResultsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		37314B1F227726F30014CC35 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				37314B2A227746390014CC35 /* SearchResultsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		37314B20227739160014CC35 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				37314B28227746250014CC35 /* SearchResultsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		37314B212277393B0014CC35 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				3778D595226DE737005C5540 /* Result.swift */,
+				37314B2622773A9B0014CC35 /* ResultViewModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		37314B22227739530014CC35 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				37314B2C2277464C0014CC35 /* SearchResultsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		37314B23227739A00014CC35 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				37314B24227739FA0014CC35 /* SearchResultsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		3778D558226DE509005C5540 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +266,7 @@
 		3778D563226DE50A005C5540 /* iTunesSearchAPI */ = {
 			isa = PBXGroup;
 			children = (
+				37314B1B227726A50014CC35 /* Module */,
 				3778D584226DE542005C5540 /* Network */,
 				3778D591226DE5F0005C5540 /* Utils */,
 				3778D590226DE5EA005C5540 /* Model */,
@@ -249,7 +338,6 @@
 		3778D590226DE5EA005C5540 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3778D595226DE737005C5540 /* Result.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,7 +374,6 @@
 		3778D5B4226F4F86005C5540 /* SearchResults */ = {
 			isa = PBXGroup;
 			children = (
-				3778D59B226DE79A005C5540 /* SearchResultsViewController.swift */,
 			);
 			path = SearchResults;
 			sourceTree = "<group>";
@@ -521,13 +608,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3778D5F2226F9FC6005C5540 /* Attribute.swift in Sources */,
+				37314B2D2277464C0014CC35 /* SearchResultsRouter.swift in Sources */,
 				3778D58A226DE55D005C5540 /* APIProtocol.swift in Sources */,
 				3778D5B3226F4D0F005C5540 /* Colors.swift in Sources */,
 				3778D58B226DE55D005C5540 /* APIService.swift in Sources */,
+				37314B2B227746390014CC35 /* SearchResultsInteractor.swift in Sources */,
+				37314B25227739FA0014CC35 /* SearchResultsProtocols.swift in Sources */,
 				3778D5E2226F7A63005C5540 /* Styles.swift in Sources */,
 				3778D5C0226F52B1005C5540 /* ResultDetailsViewModel.swift in Sources */,
 				3778D5F0226F9EFE005C5540 /* QueryItemProvider.swift in Sources */,
 				3778D5EC226F9EA9005C5540 /* Media.swift in Sources */,
+				37314B29227746250014CC35 /* SearchResultsPresenter.swift in Sources */,
 				3778D599226DE76A005C5540 /* SearchCellViewModel.swift in Sources */,
 				3778D565226DE50A005C5540 /* AppDelegate.swift in Sources */,
 				3778D5E4226F8488005C5540 /* Label.swift in Sources */,
@@ -544,6 +635,7 @@
 				3778D5B0226F1416005C5540 /* Enums+Error.swift in Sources */,
 				3778D5A8226DEABD005C5540 /* Enums.swift in Sources */,
 				3778D5AC226E0EAD005C5540 /* ResultDetailsViewController.swift in Sources */,
+				37314B2722773A9B0014CC35 /* ResultViewModel.swift in Sources */,
 				370EA146226FC29600036D31 /* Enums+Country.swift in Sources */,
 				3778D59C226DE79A005C5540 /* SearchResultsViewController.swift in Sources */,
 				3778D5AE226E7467005C5540 /* AlertDialogView.swift in Sources */,
