@@ -18,11 +18,11 @@ protocol SearchResultsViewProtocol {
 protocol SearchResultsPresenterProtocol {
     var interactor: SearchResultsInteractorProtocol? { get set }
     var router: SearchResultsRouterProtocol? { get set }
-    func showResults(with term: String, mediaType: Media?, country: Country?,_ completion:  @escaping ResultHandler)
+    func showResults(for service: APIService,_ completion:  @escaping ResultHandler)
     func showResultDetail(for viewModel: ResultViewModel)
 }
 protocol SearchResultsInteractorProtocol {
-    func getResults(with term: String, mediaType: Media?, country: Country?,_ completion: @escaping ([Result]?, ErrorHandler?) -> Void)
+    func getResults(for service: APIService,_ completion: @escaping ([Result]?, ErrorHandler?) -> Void)
 }
 protocol SearchResultsAPIServiceProtocol {
     func getResults(_ completion: (Result) -> Void)

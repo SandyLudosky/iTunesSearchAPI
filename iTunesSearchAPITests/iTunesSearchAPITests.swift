@@ -35,7 +35,7 @@ internal class DataControllerTests: XCTestCase  {
     
     func testDataControllerResultsShouldFail() {
         let service = APIService.search(term: "eminem", media: .music(entity: .mix, attribute: nil), country: nil)
-        dataController.search(for: "madonna", mediaType: .music(entity: .mix, attribute: nil), country: .unitedStates) { result in
+        dataController.search(for: service) { result in
             switch result {
             case .success(_):
                 XCTAssertTrue(true, "result should be success")

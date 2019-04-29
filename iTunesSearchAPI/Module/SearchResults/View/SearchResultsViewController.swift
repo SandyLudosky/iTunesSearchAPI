@@ -27,7 +27,7 @@ class SearchResultsViewController: BaseViewController {
     }
     private func loadData() {
         self.tableView.dataSource = dataSource
-        presenter?.showResults(with:  "eminem", mediaType:  .music(entity: .song, attribute: nil), country: .unitedStates, { (resultsViewModel, err) in
+        presenter?.showResults(for: .search(term: "eminem", media: .music(entity: .song, attribute: nil), country: .unitedStates), { (resultsViewModel, err) in
             if err == nil {
                 guard let results =  resultsViewModel else { return  }
                 self.dataSource.update(with: results)
@@ -92,15 +92,16 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
             switch option {
             //search example search(term: "eminem", mediaType: .music(entity: .mix, attribute: .mixTerm)
             case .search:
-                viewModel.search(term: seachBarText ?? "", mediaType: .music(entity: .song, attribute: nil), country: .unitedStates, completion: { err in
-                    if err == nil {
-                        guard let results = self.viewModel.data else {
+        
+                presenter?.showResults(for: .search(term: seachBarText ?? "", media: .music(entity: .song, attribute: nil), country: .unitedStates), { (viewModels, error) in
+                    if error == nil {
+                        guard let results = viewModels else {
                             return
                         }
-                       // self.dataSource.update(with: results)
+                        self.dataSource.update(with: results)
                         self.tableView.reloadData()
                     } else {
-                        AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
+                        AlertDialogView.build(with: String(describing: error?.errorDescription), vc: self)
                     }
                 })
             case .lookUp:

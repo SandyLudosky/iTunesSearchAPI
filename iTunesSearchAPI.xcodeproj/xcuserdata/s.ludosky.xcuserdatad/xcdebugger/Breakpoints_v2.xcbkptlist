@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iTunesSearchAPI/DataSource/SearchResultDataSource.swift"
-            timestampString = "578246247.754065"
+            timestampString = "578259299.911491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iTunesSearchAPI/Module/SearchResults/View/SearchResultsViewController.swift"
-            timestampString = "578246247.75415"
+            timestampString = "578259299.911571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "loadData()"
             landmarkType = "7">
             <Locations>
@@ -121,29 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iTunesSearchAPI/Module/SearchResults/Interactor/SearchResultsInteractor.swift"
-            timestampString = "578246247.754532"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "getResults(with:mediaType:country:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "iTunesSearchAPI/Controllers/DataController.swift"
-            timestampString = "578246247.754581"
+            timestampString = "578259299.9116369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "search(for:mediaType:country:completion:)"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "lookup(with:entity:completion:)"
             landmarkType = "7">
             <Locations>
                <Location

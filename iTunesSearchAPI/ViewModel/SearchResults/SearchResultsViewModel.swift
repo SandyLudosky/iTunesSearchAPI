@@ -35,18 +35,6 @@ extension SearchResultsViewModel: SearchResultViewModelProtocol {
     }
     
     func search(term: String, mediaType: Media?, country: Country?, completion: @escaping (ErrorHandler?) -> ()) {
-        dataController.search(for: term, mediaType: mediaType, country: country) { results in
-            switch results {
-            case .success(let array):
-                guard let arr = array as? [Result] else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.data = arr
-                    completion(nil)
-                }
-            case .failure(let reason):  completion(reason)
-            }
-        }
+        
     }
 }

@@ -12,9 +12,8 @@ import Foundation
 class SearchResultsPresenter : SearchResultsPresenterProtocol {
     var interactor: SearchResultsInteractorProtocol?
     var router: SearchResultsRouterProtocol?
-    
-    func showResults(with term: String, mediaType: Media?, country: Country?, _ completion: @escaping ([ResultViewModel]?, ErrorHandler?) -> Void) {
-        interactor?.getResults(with: term, mediaType: mediaType, country: country, { (results, error) in
+    func showResults(for service: APIService, _ completion: @escaping ResultHandler) {
+        interactor?.getResults(for: service, { (results, error) in
             if error == nil {
                 guard let r = results else { return }
                 let resultsViewModel = r.map({ result -> ResultViewModel in
