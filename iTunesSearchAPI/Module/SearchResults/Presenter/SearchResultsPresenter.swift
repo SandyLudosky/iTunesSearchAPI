@@ -27,6 +27,6 @@ class SearchResultsPresenter : SearchResultsPresenterProtocol {
     }
     
     func showResultDetail(for viewModel: ResultViewModel) {
-        
+        router?.showResultDetail(for: viewModel)
     }
 }

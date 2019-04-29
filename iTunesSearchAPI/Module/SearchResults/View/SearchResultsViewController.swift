@@ -27,6 +27,7 @@ class SearchResultsViewController: BaseViewController {
     }
     private func loadData() {
         self.tableView.dataSource = dataSource
+        self.tableView.delegate = self
         presenter?.showResults(for: .search(term: "eminem", media: .music(entity: .song, attribute: nil), country: .unitedStates), { (resultsViewModel, err) in
             if err == nil {
                 guard let results =  resultsViewModel else { return  }
@@ -135,9 +136,11 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
 extension SearchResultsViewController: UITableViewDelegate {
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let currentCell = tableView.cellForRow(at: indexPath) as? SearchResultTableViewCell else { return }
-        let result = viewModel.data?[indexPath.row]
-        if let _ = result?.previewURL {
-            performSegue(withIdentifier: "goToDetails", sender: currentCell) // segue only if preview is available
+        guard let result = dataSource.results[indexPath.row] as? ResultViewModel else { return }
+        let model = ResultViewModel(trackName: result.trackName, artistName: result.artistName, previewURL: result.previewURL ?? "", artwork: result.artwork ?? "")
+        if let _ = result.previewURL as? String {
+            //performSegue(withIdentifier: "goToDetails", sender: currentCell) // segue only if preview is available
+            presenter?.showResultDetail(for: model)
         }
     }
 }

@@ -13,7 +13,7 @@
         <!--Result Details View Controller-->
         <scene sceneID="8CK-e5-ztL">
             <objects>
-                <viewController id="hJI-6h-tbP" customClass="ResultDetailsViewController" customModule="iTunesSearchAPI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier=" ResultDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hJI-6h-tbP" customClass="ResultDetailsViewController" customModule="iTunesSearchAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jaz-zw-P7T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,7 +168,7 @@
         <!--Search Results View Controller-->
         <scene sceneID="165-SD-wPw">
             <objects>
-                <viewController id="HUQ-NI-WCG" customClass="SearchResultsViewController" customModule="iTunesSearchAPI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HUQ-NI-WCG" customClass="SearchResultsViewController" customModule="iTunesSearchAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XmO-eY-V3u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

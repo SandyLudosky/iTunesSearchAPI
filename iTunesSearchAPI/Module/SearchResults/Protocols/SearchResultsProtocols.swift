@@ -28,7 +28,17 @@ protocol SearchResultsAPIServiceProtocol {
     func getResults(_ completion: (Result) -> Void)
 }
 protocol SearchResultsRouterProtocol {
-    var viewController: UIViewController? { get set }
+    var viewController: UIViewController?  { get set }
+    var navController: UINavigationController?  { get set }
     func showResultDetail(for viewModel: ResultViewModel)
+}
+
+extension SearchResultsRouterProtocol {
+    var viewController: UIViewController? {
+        return UIViewController()
+    }
+    var navController: UINavigationController? {
+        return UINavigationController()
+    }
 }
 

@@ -16,7 +16,8 @@ class ResultDetailsViewController: BaseViewController {
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var webView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
-    let viewModel = ResultDetailsViewModel()
+    var viewModel = ResultDetailsViewModel()
+    var vm: ResultViewModel?
     var result: Result?
     
     override func viewDidLoad() {
@@ -25,7 +26,8 @@ class ResultDetailsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureView()
+        self.title = vm?.trackName
+        //configureView()
     }
 }
 

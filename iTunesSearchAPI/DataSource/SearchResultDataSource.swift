@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SearchResultDataSource: NSObject {
-    private var results: [ResultViewModel]
+    var results: [ResultViewModel]
     init(items: [ResultViewModel]) {
         self.results = items
         super.init()
