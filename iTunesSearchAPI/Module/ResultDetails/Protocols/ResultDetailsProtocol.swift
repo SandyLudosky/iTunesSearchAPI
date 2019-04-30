@@ -8,19 +8,28 @@
 
 import Foundation
 
+
 typealias ResultDetailsHandler = (ResultDetailsViewModel?, ErrorHandler?) -> Void
+typealias ImageDataHandler = (Data?, ErrorHandler?) -> Void
+typealias PreviewURLHandler = (URL?, ErrorHandler?) -> Void
+
 protocol ResultDetailsViewProtocol {
     var presenter:ResultDetailsPresenterProtocol? { get set }
+    func setUp()
     func configureView()
+    func showResultDetails()
 }
 protocol ResultDetailsPresenterProtocol {
     var interactor: ResultDetailsInteractorProtocol? { get set }
-    func showResultDetail(for service: APIService,_ completion:  @escaping ResultDetailsHandler)
-    func showResultDetail(for viewModel: ResultViewModel)
+    var viewModelDetails: ResultDetailsViewModel?  { get set }
+    func showResultDetail(for viewModel: ResultViewModel, completion: @escaping () -> ())
 }
 protocol ResultDetailsInteractorProtocol {
-    func getResultDetails(for service: APIService,_ completion: @escaping ([Result]?, ErrorHandler?) -> Void)
+
+    func loadArtwork(with url: String,_ completion: @escaping ImageDataHandler)
+    func loadPreview(with url: String,_ completion: @escaping PreviewURLHandler)
 }
+
 protocol ResultDetailsAPIServiceProtocol {
     func getResults(_ completion: (Result) -> Void)
 }

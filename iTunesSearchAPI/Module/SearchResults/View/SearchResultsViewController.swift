@@ -10,7 +10,6 @@ import UIKit
 
 class SearchResultsViewController: BaseViewController {
     @IBOutlet var tableView: UITableView!
-    let viewModel = SearchResultsViewModel()
     let searchController = UISearchController(searchResultsController: nil)
     var data: [Result] = []
     var searchActive : Bool = false
@@ -105,18 +104,21 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                         AlertDialogView.build(with: String(describing: error?.errorDescription), vc: self)
                     }
                 })
-            case .lookUp:
-                viewModel.lookup(with: seachBarText ?? "", entity: nil) { err in
-                    if err == nil {
-                        guard let results = self.viewModel.data else {
-                            return
-                        }
-                       // self.dataSource.update(with: results)
-                        self.tableView.reloadData()
-                    } else {
-                        AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
-                    }
-                }
+            case .lookUp: break
+                /*
+                     viewModel.lookup(with: seachBarText ?? "", entity: nil) { err in
+                     if err == nil {
+                     guard let results = self.viewModel.data else {
+                     return
+                     }
+                     // self.dataSource.update(with: results)
+                     self.tableView.reloadData()
+                     } else {
+                     AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
+                     }
+                     }
+                 */
+                
             }
         }
     }

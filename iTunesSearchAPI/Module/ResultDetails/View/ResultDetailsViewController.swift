@@ -16,43 +16,62 @@ class ResultDetailsViewController: BaseViewController {
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var webView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
-    var viewModel = ResultDetailsViewModel()
+    var viewModel: ResultDetailsViewModel?
     var vm: ResultViewModel?
     var result: Result?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    var presenter: ResultDetailsPresenterProtocol?
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = vm?.trackName
-        //configureView()
+        setUp()
+        configureView()
+        showResultDetails()
     }
 }
 
-extension ResultDetailsViewController {
+extension ResultDetailsViewController: ResultDetailsViewProtocol {
+    func setUp() {
+        let viewController = self
+        let presenter = ResultDetailsPresenter()
+        let interactor = ResultDetailsInteractor()
+        viewController.presenter = presenter
+        presenter.interactor = interactor
+    }
+    
     func configureView() {
-        if let r = result {
-            viewModel.displayDetails(with: r) {
-                if #available(iOS 9.1, *) {
-                    if let req = viewModel.request {
-                        let webConfiguration = WKWebViewConfiguration()
-                        let resultWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300), configuration: webConfiguration)
-                        resultWebView.uiDelegate = self
-                        resultWebView.navigationDelegate = self
-                        webView.addSubview(resultWebView)
-                        resultWebView.load(req)
-                    }
-                }
-                viewModel.loadArtwork(completion: { img in
-                    self.resultImageView.image = img
-                })
-                
-                artistNameLabel.text = result?.artistName
-                trackNameLabel.text = result?.trackName
+        self.title = vm?.trackName
+        artistNameLabel.text = vm?.artistName
+        trackNameLabel.text = vm?.trackName
+    }
+    
+    func showResultDetails() {
+        guard let vm = vm else { return }
+        presenter?.showResultDetail(for: vm, completion: {
+            if let request = self.presenter?.viewModelDetails?.request {
+                self.loadWebView(with: request)
             }
+            if let artwork = self.presenter?.viewModelDetails?.artwork {
+                self.loadImage(with: artwork)
+            }
+        })
+    }
+}
+
+//MARK - Private
+extension ResultDetailsViewController {
+    private func loadWebView(with request: URLRequest) {
+        if #available(iOS 9.1, *) {
+            let webConfiguration = WKWebViewConfiguration()
+            let resultWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300), configuration: webConfiguration)
+            resultWebView.uiDelegate = self
+            resultWebView.navigationDelegate = self
+            webView.addSubview(resultWebView)
+            resultWebView.load(request)
         }
+    }
+    
+    private func loadImage(with artwork: UIImage) {
+        resultImageView.image = artwork
     }
 }
 

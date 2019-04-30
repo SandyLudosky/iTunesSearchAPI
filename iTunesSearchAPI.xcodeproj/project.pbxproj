@@ -41,8 +41,6 @@
 		3778D5AE226E7467005C5540 /* AlertDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5AD226E7467005C5540 /* AlertDialogView.swift */; };
 		3778D5B0226F1416005C5540 /* Enums+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5AF226F1416005C5540 /* Enums+Error.swift */; };
 		3778D5B3226F4D0F005C5540 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5B2226F4D0F005C5540 /* Colors.swift */; };
-		3778D5B9226F5087005C5540 /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5B8226F5087005C5540 /* SearchResultsViewModel.swift */; };
-		3778D5C0226F52B1005C5540 /* ResultDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5BF226F52B1005C5540 /* ResultDetailsViewModel.swift */; };
 		3778D5C4226F67DF005C5540 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5C3226F67DF005C5540 /* Button.swift */; };
 		3778D5C7226F79E2005C5540 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778D5C6226F79E2005C5540 /* Fonts.swift */; };
 		3778D5D5226F7A22005C5540 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3778D5C9226F7A21005C5540 /* Roboto-ThinItalic.ttf */; };
@@ -115,8 +113,6 @@
 		3778D5AD226E7467005C5540 /* AlertDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogView.swift; sourceTree = "<group>"; };
 		3778D5AF226F1416005C5540 /* Enums+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enums+Error.swift"; sourceTree = "<group>"; };
 		3778D5B2226F4D0F005C5540 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		3778D5B8226F5087005C5540 /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
-		3778D5BF226F52B1005C5540 /* ResultDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailsViewModel.swift; sourceTree = "<group>"; };
 		3778D5C3226F67DF005C5540 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		3778D5C6226F79E2005C5540 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		3778D5C9226F7A21005C5540 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
@@ -367,7 +363,6 @@
 				3778D5A3226DE898005C5540 /* DataController.swift */,
 				3778D5E7226F9C14005C5540 /* Base */,
 				3778D5B6226F4FA8005C5540 /* Welcome */,
-				3778D5B5226F4F98005C5540 /* ResultDetails */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -377,8 +372,6 @@
 			children = (
 				370EA147227051AF00036D31 /* Base */,
 				3778D5BA226F50C4005C5540 /* Views */,
-				3778D5B7226F4FB6005C5540 /* SearchResults */,
-				3778D5BE226F51A5005C5540 /* ResultDetails */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -423,27 +416,12 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		3778D5B5226F4F98005C5540 /* ResultDetails */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ResultDetails;
-			sourceTree = "<group>";
-		};
 		3778D5B6226F4FA8005C5540 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
 				3778D5A5226DEA94005C5540 /* WelcomeViewController.swift */,
 			);
 			path = Welcome;
-			sourceTree = "<group>";
-		};
-		3778D5B7226F4FB6005C5540 /* SearchResults */ = {
-			isa = PBXGroup;
-			children = (
-				3778D5B8226F5087005C5540 /* SearchResultsViewModel.swift */,
-			);
-			path = SearchResults;
 			sourceTree = "<group>";
 		};
 		3778D5BA226F50C4005C5540 /* Views */ = {
@@ -471,14 +449,6 @@
 				3778D56D226DE50B005C5540 /* LaunchScreen.storyboard */,
 			);
 			path = storyboards;
-			sourceTree = "<group>";
-		};
-		3778D5BE226F51A5005C5540 /* ResultDetails */ = {
-			isa = PBXGroup;
-			children = (
-				3778D5BF226F52B1005C5540 /* ResultDetailsViewModel.swift */,
-			);
-			path = ResultDetails;
 			sourceTree = "<group>";
 		};
 		3778D5C2226F67A6005C5540 /* Components */ = {
@@ -660,7 +630,6 @@
 				37314B2B227746390014CC35 /* SearchResultsInteractor.swift in Sources */,
 				37314B25227739FA0014CC35 /* SearchResultsProtocols.swift in Sources */,
 				3778D5E2226F7A63005C5540 /* Styles.swift in Sources */,
-				3778D5C0226F52B1005C5540 /* ResultDetailsViewModel.swift in Sources */,
 				3778D5F0226F9EFE005C5540 /* QueryItemProvider.swift in Sources */,
 				3778D5EC226F9EA9005C5540 /* Media.swift in Sources */,
 				37314B29227746250014CC35 /* SearchResultsPresenter.swift in Sources */,
@@ -678,7 +647,6 @@
 				3778D5E9226F9C73005C5540 /* BaseViewController.swift in Sources */,
 				3778D589226DE55D005C5540 /* JSONParser.swift in Sources */,
 				3778D5EE226F9EDD005C5540 /* Entity.swift in Sources */,
-				3778D5B9226F5087005C5540 /* SearchResultsViewModel.swift in Sources */,
 				37314B39227838DE0014CC35 /* ResultDetailsPresenter.swift in Sources */,
 				3778D5B0226F1416005C5540 /* Enums+Error.swift in Sources */,
 				3778D5A8226DEABD005C5540 /* Enums.swift in Sources */,

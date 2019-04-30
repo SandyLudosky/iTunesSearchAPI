@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 public struct ResultDetailsViewModel {
-    let trackName: String
-    let artistName: String
-    let request: URLRequest?
-    let artwork: UIImage?
+    var request: URLRequest?
+    var artwork: UIImage?
 }
