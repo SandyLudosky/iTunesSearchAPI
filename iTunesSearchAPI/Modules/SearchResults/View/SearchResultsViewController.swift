@@ -139,31 +139,11 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
 
 extension SearchResultsViewController: UITableViewDelegate {
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let currentCell = tableView.cellForRow(at: indexPath) as? SearchResultTableViewCell else { return }
-        guard let result = dataSource.results[indexPath.row] as? ResultViewModel else { return }
-        let model = ResultViewModel(trackName: result.trackName, artistName: result.artistName, previewURL: result.previewURL ?? "", artwork: result.artwork ?? "")
-        if let _ = result.previewURL as? String {
-            //performSegue(withIdentifier: "goToDetails", sender: currentCell) // segue only if preview is available
+        let result = dataSource.results[indexPath.row]
+    let model = ResultViewModel(trackName: result.trackName, artistName: result.artistName, previewURL: result.previewURL , artwork: result.artwork )
+        if result.previewURL != "" {
             presenter?.showResultDetail(for: model)
         }
     }
 }
 
-// MARK: - Navigation
-extension SearchResultsViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDetails" {
-            guard
-            let cell = sender as? SearchResultTableViewCell,
-            let resultDetailsVC = segue.destination as? ResultDetailsViewController
-                else {
-                assertionFailure("Failed to unwrap sender. Try to set a breakpoint here and check what sender is")
-                return
-            }
-            guard let indexPath = tableView.indexPath(for: cell) else {
-                return
-            }
-            //resultDetailsVC.result = dataSource.result(at: indexPath)
-        }
-    }
-}
