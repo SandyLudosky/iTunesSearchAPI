@@ -15,7 +15,7 @@ struct SearchCellViewModel {
     let previewURL: String?
     let artwork: String?
     var image:UIImage?
-    let dataController = DataController()
+    let dataController = DataManagerService()
 }
 extension SearchCellViewModel {
     init(with result: ResultViewModel) {

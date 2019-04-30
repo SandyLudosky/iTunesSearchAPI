@@ -36,6 +36,8 @@ class SearchResultsViewController: BaseViewController {
                 AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
             }
         })
+        
+     
     }
     private func configureView() {
         tableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: SearchResultTableViewCell.identifier)

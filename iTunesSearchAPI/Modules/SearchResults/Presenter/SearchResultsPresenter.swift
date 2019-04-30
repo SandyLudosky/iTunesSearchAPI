@@ -12,6 +12,7 @@ import Foundation
 class SearchResultsPresenter : SearchResultsPresenterProtocol {
     var interactor: SearchResultsInteractorProtocol?
     var router: SearchResultsRouterProtocol?
+
     func showResults(for service: APIService, _ completion: @escaping ResultHandler) {
         interactor?.getResults(for: service, { (results, error) in
             if error == nil {

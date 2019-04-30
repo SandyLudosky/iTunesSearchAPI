@@ -12,7 +12,7 @@ import XCTest
 
 internal class SearchAPITests: XCTestCase  {
      let client = APIClient<APIService>()
-     let dataController = DataController()
+     let dataController = DataManager()
 
     func testAPIService() {
         let service = APIService.search(term: "eminem", media: .music(entity: .mix, attribute: nil), country: nil)
@@ -27,7 +27,7 @@ internal class SearchAPITests: XCTestCase  {
 
 internal class DataControllerTests: XCTestCase  {
     let client = APIClient<APIService>()
-    let dataController = DataController()
+    let dataController = DataManager()
     func testDataControllerResultsShouldSucceed() {
         let service = APIService.search(term: "eminem", media: .music(entity: .mix, attribute: nil), country: nil)
         XCTAssertTrue(service.request?.url == URL(string: "https://itunes.apple.com/search?term=eminem&country&media=music&entity=mix"), "URL should be well formatted - see iTunesSearchAPI docs")

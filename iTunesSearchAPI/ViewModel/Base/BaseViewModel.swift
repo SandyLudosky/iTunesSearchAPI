@@ -10,6 +10,6 @@ import Foundation
 
 
 class BaseViewModel {
-    let dataController = DataController()
+    let dataController = DataManagerService()
     var data: Result?
 }

@@ -9,9 +9,9 @@
 import Foundation
 
 class SearchResultsInteractor: SearchResultsInteractorProtocol {
-    let dataController = DataController()
+    let dataManager = DataManagerService()
     func getResults(for service: APIService, _ completion: @escaping ([Result]?, ErrorHandler?) -> Void) {
-        dataController.search(for: service) { results in
+        dataManager.get(for: service) { results in
             switch results {
             case .success(let searchResults):
                 guard let r = searchResults as? [Result] else { return }

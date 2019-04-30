@@ -10,20 +10,22 @@ import Foundation
 
 typealias Handler = (ResultObject<Any>) -> Void
 typealias DataHandler = (Data?, Error?) -> Void
-protocol DataControllerProtocol {
-    func search(for service: APIService, completion: @escaping Handler)
-    func lookup(with id: String, entity: ItunesEntity?, completion: @escaping Handler)
+protocol DataManagerProtocol {
+    func get(for service: APIService, completion: @escaping Handler)
     func download(with url: String, completion: @escaping DataHandler)
 }
-class DataController {
+class DataManagerService {
     let client = APIClient<APIService>()
 }
-
-extension DataController: DataControllerProtocol {
-    func lookup(with id: String, entity: ItunesEntity?, completion: @escaping Handler) {
-        client.get(with: .lookup(id: id, entity: entity)) { results in
+extension DataManagerService: DataManagerProtocol {
+    func get(for service: APIService, completion: @escaping Handler) {
+        client.get(with: service) { results in
             switch results {
-            case .array(_), .data(_): break
+            case .array(_) : break
+            case .data(let data):
+                if let dataValid = data as? Data {
+                   completion(.success(dataValid))
+                }
             case .dict(let dict):
                 guard let results = dict["results"] as? [[String : Any]] else {
                     return
@@ -41,7 +43,7 @@ extension DataController: DataControllerProtocol {
             }
         }
     }
-    
+
     func download(with url: String, completion: @escaping DataHandler) {
         client.get(with: .download(url: url)) { result in
             switch result {
@@ -54,27 +56,6 @@ extension DataController: DataControllerProtocol {
             }
         }
     }
-    
-    func search(for service: APIService, completion: @escaping Handler) {
-        client.get(with: service) { results in
-            switch results {
-            case .array(_), .data(_): break
-            case .dict(let dict):
-                guard let results = dict["results"] as? [[String : Any]] else {
-                    return
-                }
-                let searchResults = try? results.map({ dict -> Result in
-                    guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
-                        throw ErrorHandler.invalidData
-                    }
-                    return try JSONDecoder().decode(Result.self, from: data)
-                })
-                DispatchQueue.main.async {
-                    completion(.success(searchResults ?? []))
-                }
-            case .error(let reason): completion(.failure(reason))
-            }
-        }
-    }
+
 }
 

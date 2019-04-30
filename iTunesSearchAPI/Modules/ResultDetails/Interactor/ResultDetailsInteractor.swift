@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ResultDetailsInteractor: ResultDetailsInteractorProtocol {
-    let dataController = DataController()
+    let dataController = DataManagerService()
 
     func loadPreview(with url: String, _ completion: @escaping PreviewURLHandler) {
         guard let preview = URL(string: url) else {
