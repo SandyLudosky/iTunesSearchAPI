@@ -27,17 +27,17 @@ class SearchResultsViewController: BaseViewController {
     private func loadData() {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = self
-        presenter?.showResults(for: .search(term: "eminem", media: .music(entity: .song, attribute: nil), country: .unitedStates), { (resultsViewModel, err) in
-            if err == nil {
-                guard let results =  resultsViewModel else { return  }
-                self.dataSource.update(with: results)
-                self.tableView.reloadData()
-            } else {
-                AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
-            }
-        })
-        
-     
+        if action == .search {
+            presenter?.showResults(for: .search(term: "eminem", media: .music(entity: .song, attribute: nil), country: .unitedStates), { (resultsViewModel, err) in
+                if err == nil {
+                    guard let results =  resultsViewModel else { return  }
+                    self.dataSource.update(with: results)
+                    self.tableView.reloadData()
+                } else {
+                    AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
+                }
+            })
+        }
     }
     private func configureView() {
         tableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: SearchResultTableViewCell.identifier)
@@ -94,7 +94,6 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
             switch option {
             //search example search(term: "eminem", mediaType: .music(entity: .mix, attribute: .mixTerm)
             case .search:
-        
                 presenter?.showResults(for: .search(term: seachBarText ?? "", media: .music(entity: .song, attribute: nil), country: .unitedStates), { (viewModels, error) in
                     if error == nil {
                         guard let results = viewModels else {
@@ -106,21 +105,18 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
                         AlertDialogView.build(with: String(describing: error?.errorDescription), vc: self)
                     }
                 })
-            case .lookUp: break
-                /*
-                     viewModel.lookup(with: seachBarText ?? "", entity: nil) { err in
-                     if err == nil {
-                     guard let results = self.viewModel.data else {
-                     return
-                     }
-                     // self.dataSource.update(with: results)
-                     self.tableView.reloadData()
-                     } else {
-                     AlertDialogView.build(with: String(describing: err?.errorDescription), vc: self)
-                     }
-                     }
-                 */
-                
+            case .lookUp:
+                presenter?.showResults(for: .lookup(id: seachBarText ?? "", entity: nil), { (viewModels, error) in
+                    if error == nil {
+                        guard let results = viewModels else {
+                            return
+                        }
+                        self.dataSource.update(with: results)
+                        self.tableView.reloadData()
+                    } else {
+                        AlertDialogView.build(with: String(describing: error?.errorDescription), vc: self)
+                    }
+                })
             }
         }
     }

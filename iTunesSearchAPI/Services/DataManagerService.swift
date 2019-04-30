@@ -24,9 +24,7 @@ extension DataManagerService: DataManagerProtocol {
                    completion(.success(dataValid))
                 }
             case .dict(let dict):
-                guard let collection = dict["results"] as? [[String : Any]] else {
-                    return
-                }
+                guard let collection = dict["results"] as? [[String : Any]] else { return }
                 DispatchQueue.main.async {
                     completion(.success(collection.transform(Result.self)))
                 }

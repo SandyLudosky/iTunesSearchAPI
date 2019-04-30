@@ -29,7 +29,10 @@ extension SearchCellViewModel {
             switch result {
             case .success(let data):
                 guard let imageData = data as? Data else { return }
-                guard let img = (UIImage(data: imageData)) else { return }
+                guard let img = (UIImage(data: imageData)) else {
+                    completion(UIImage(named: "placeholder-120x120"), nil)
+                    return
+                }
                 completion(img, nil)
             case .failure(let error):
                 completion(nil, error)

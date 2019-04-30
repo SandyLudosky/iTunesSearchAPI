@@ -11,7 +11,7 @@ import UIKit
 
 extension URL {
     func encode() -> URL? {
-        let stringURL = "\(self)"
+        let stringURL = self.absoluteString
         let allowedCharacterSet = (CharacterSet(charactersIn: "%").inverted)
         guard let encodedString = stringURL.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) else {
             return nil
