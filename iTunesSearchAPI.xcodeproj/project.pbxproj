@@ -305,9 +305,18 @@
 		37314B3C2278E5F20014CC35 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3778D584226DE542005C5540 /* Network */,
 				3778D5A3226DE898005C5540 /* DataManagerService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		37314B3E2278FC180014CC35 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				370EA14E22721C9900036D31 /* SearchResultTableViewCell */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3778D558226DE509005C5540 = {
@@ -333,10 +342,8 @@
 			children = (
 				37314B3C2278E5F20014CC35 /* Services */,
 				37314B1B227726A50014CC35 /* Modules */,
-				3778D584226DE542005C5540 /* Network */,
 				3778D591226DE5F0005C5540 /* Utils */,
 				3778D58F226DE5E3005C5540 /* View */,
-				3778D58E226DE5D4005C5540 /* ViewModel */,
 				3778D58D226DE5C8005C5540 /* Controllers */,
 				3778D592226DE5FB005C5540 /* DataSource */,
 				3778D564226DE50A005C5540 /* AppDelegate.swift */,
@@ -387,10 +394,11 @@
 		3778D58F226DE5E3005C5540 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				37314B3E2278FC180014CC35 /* Cells */,
 				3778D5BD226F512B005C5540 /* storyboards */,
+				3778D58E226DE5D4005C5540 /* ViewModel */,
 				3778D56B226DE50B005C5540 /* Assets.xcassets */,
 				3778D5AD226E7467005C5540 /* AlertDialogView.swift */,
-				370EA14E22721C9900036D31 /* SearchResultTableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";

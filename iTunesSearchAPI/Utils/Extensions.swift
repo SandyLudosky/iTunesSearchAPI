@@ -23,4 +23,15 @@ extension URL {
     }
 }
 
+extension Sequence {
+    func transform<T: Codable>(_ type: T.Type) -> Any {
+        let results = try? self.map({ dict -> Any in
+            guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
+                throw ErrorHandler.invalidData
+            }
+            return try JSONDecoder().decode(T.self, from: data)
+        })
+        return results ?? []
+    }
+}
 

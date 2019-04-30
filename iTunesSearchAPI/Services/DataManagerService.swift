@@ -24,22 +24,16 @@ extension DataManagerService: DataManagerProtocol {
                    completion(.success(dataValid))
                 }
             case .dict(let dict):
-                guard let results = dict["results"] as? [[String : Any]] else {
+                guard let collection = dict["results"] as? [[String : Any]] else {
                     return
                 }
-                let searchResults = try? results.map({ dict -> Result in
-                    guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
-                        throw ErrorHandler.invalidData
-                    }
-                    return try JSONDecoder().decode(Result.self, from: data)
-                })
                 DispatchQueue.main.async {
-                    completion(.success(searchResults ?? []))
+                    completion(.success(collection.transform(Result.self)))
                 }
+            
             case .array(_) : break
             case .error(let reason): completion(.failure(reason))
             }
         }
     }
 }
-
