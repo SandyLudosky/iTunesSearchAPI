@@ -25,8 +25,7 @@ protocol ResultDetailsPresenterProtocol {
     func showResultDetail(for viewModel: ResultViewModel, completion: @escaping () -> ())
 }
 protocol ResultDetailsInteractorProtocol {
-
-    func loadArtwork(with url: String,_ completion: @escaping ImageDataHandler)
+    func loadArtwork(with service: APIService,_ completion: @escaping ImageDataHandler)
     func loadPreview(with url: String,_ completion: @escaping PreviewURLHandler)
 }
 

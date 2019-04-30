@@ -15,7 +15,7 @@ struct SearchCellViewModel {
     let previewURL: String?
     let artwork: String?
     var image:UIImage?
-    let dataController = DataManagerService()
+    let dataManager = DataManagerService()
 }
 extension SearchCellViewModel {
     init(with result: ResultViewModel) {
@@ -24,12 +24,15 @@ extension SearchCellViewModel {
         self.previewURL = result.previewURL
         self.artwork = result.artwork
     }
-    func preview(with url: String, completion: @escaping (UIImage) -> Void) {
-        dataController.download(with: url) { (data, error) in
-            if error == nil {
-                guard let imageData = data else { return }
+    func preview(with url: String, completion: @escaping (UIImage?, ErrorHandler?) -> Void) {
+        dataManager.get(for: .download(url: url)) {  result in
+            switch result {
+            case .success(let data):
+                guard let imageData = data as? Data else { return }
                 guard let img = (UIImage(data: imageData)) else { return }
-                completion(img)
+                completion(img, nil)
+            case .failure(let error):
+                completion(nil, error)
             }
         }
     }

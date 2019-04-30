@@ -22,8 +22,6 @@ class SearchResultTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }
 
@@ -32,9 +30,11 @@ extension SearchResultTableViewCell {
         trackName.text = model.name
         artistName.text = model.artist
         if let url = model.artwork {
-            model.preview(with: url) { image in
-                DispatchQueue.main.async {
-                    self.img.image = image
+            model.preview(with: url) { image, error  in
+                if error == nil {
+                    DispatchQueue.main.async {
+                        self.img.image = image
+                    }
                 }
             }
         }

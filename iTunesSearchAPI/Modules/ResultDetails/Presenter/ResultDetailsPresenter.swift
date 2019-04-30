@@ -14,7 +14,7 @@ class ResultDetailsPresenter: ResultDetailsPresenterProtocol  {
  
     func showResultDetail(for viewModel: ResultViewModel, completion: @escaping () -> ()) {
         viewModelDetails = ResultDetailsViewModel()
-        interactor?.loadArtwork(with: viewModel.artwork, { (data, error) in
+        interactor?.loadArtwork(with: .download(url: viewModel.artwork), { (data, error) in
             if error == nil {
                 guard let data = data else { return }
                 DispatchQueue.main.async {
@@ -23,7 +23,7 @@ class ResultDetailsPresenter: ResultDetailsPresenterProtocol  {
                 }
             }
         })
-        
+
         interactor?.loadPreview(with: viewModel.previewURL, { (url, error) in
             guard let url = url else { return }
             DispatchQueue.main.async {

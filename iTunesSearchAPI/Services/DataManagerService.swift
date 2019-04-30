@@ -9,10 +9,8 @@
 import Foundation
 
 typealias Handler = (ResultObject<Any>) -> Void
-typealias DataHandler = (Data?, Error?) -> Void
 protocol DataManagerProtocol {
     func get(for service: APIService, completion: @escaping Handler)
-    func download(with url: String, completion: @escaping DataHandler)
 }
 class DataManagerService {
     let client = APIClient<APIService>()
@@ -21,7 +19,6 @@ extension DataManagerService: DataManagerProtocol {
     func get(for service: APIService, completion: @escaping Handler) {
         client.get(with: service) { results in
             switch results {
-            case .array(_) : break
             case .data(let data):
                 if let dataValid = data as? Data {
                    completion(.success(dataValid))
@@ -39,23 +36,10 @@ extension DataManagerService: DataManagerProtocol {
                 DispatchQueue.main.async {
                     completion(.success(searchResults ?? []))
                 }
+            case .array(_) : break
             case .error(let reason): completion(.failure(reason))
             }
         }
     }
-
-    func download(with url: String, completion: @escaping DataHandler) {
-        client.get(with: .download(url: url)) { result in
-            switch result {
-            case .array(_), .dict(_): break
-            case .data(let data):
-                if let dataValid = data as? Data {
-                    _ = completion(dataValid, nil)
-                }
-            case .error(let reason): completion(nil, reason)
-            }
-        }
-    }
-
 }
 

@@ -10,27 +10,27 @@ import Foundation
 import UIKit
 
 class ResultDetailsInteractor: ResultDetailsInteractorProtocol {
-    let dataController = DataManagerService()
-
+    let dataManager = DataManagerService()
+    
+    func loadArtwork(with service: APIService, _ completion: @escaping ImageDataHandler) {
+        dataManager.get(for: service) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    guard let dataValid = data as? Data else { return }
+                    completion(dataValid, nil)
+                }
+            case .failure(let error):
+                 completion(nil, error)
+            }
+        }
+    }
+    
     func loadPreview(with url: String, _ completion: @escaping PreviewURLHandler) {
         guard let preview = URL(string: url) else {
             completion(nil, .invalidData)
             return
         }
         completion(preview, nil)
-    }
-    
-    func loadArtwork(with url: String, _ completion: @escaping ImageDataHandler) {
-        dataController.download(with: url) { (data, error)  in
-            if error == nil {
-                DispatchQueue.main.async {
-                    guard let imageData = data else {
-                        completion(nil, .invalidData)
-                        return
-                    }
-                    completion(imageData, nil)
-                }
-            }
-        }
     }
 }
