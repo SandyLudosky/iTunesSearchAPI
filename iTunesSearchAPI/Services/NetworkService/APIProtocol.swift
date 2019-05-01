@@ -10,16 +10,15 @@ import Foundation
 
 public protocol APIProtocol {
     var baseURL: String { get }
-    var endpoint: String { get } // required
+    var endpoint: String? { get } // required
     var request: URLRequest? { get }
 }
 
 extension APIProtocol {
     func asURLRequest(queryItems: [URLQueryItem]) throws -> URLRequest? {
-        
         //baseURL + endpoints
         guard let urlStr = URL(string: baseURL),
-        var components = URLComponents(url: urlStr.appendingPathComponent(endpoint), resolvingAgainstBaseURL: false)
+        var components = URLComponents(url: urlStr.appendingPathComponent(endpoint ?? ""), resolvingAgainstBaseURL: false)
         else { throw ErrorHandler.encodingError }
         
         //parameters

@@ -17,14 +17,10 @@ class APIClient<T: APIProtocol> {
             case .success(let data):
                 JSONParser.parse(data, completion: { results in
                     switch results {
-                    case .array(let arr):
-                        completion(.array(arr))
-                    case .dict(let dict):
-                        completion(.dict(dict))
-                    case .data(let data):
-                        completion(.data(data))
-                    case .error(let err):
-                        completion(.error(err))
+                    case .array(let arr): completion(.array(arr))
+                    case .dict(let dict): completion(.dict(dict))
+                    case .data(let data): completion(.data(data))
+                    case .error(let err): completion(.error(err))
                     }
                 })
             case .failure(let error): completion(.error(error))
@@ -36,7 +32,6 @@ class APIClient<T: APIProtocol> {
 }
 
 private extension APIClient {
-    //handle response and data
     private func runTask(with service: APIProtocol, completion: @escaping ResponseHandler) -> URLSessionDataTask? {
         guard let request = service.request else {
             return nil
@@ -48,8 +43,10 @@ private extension APIClient {
                     return
                 }
                 switch httpResponse.statusCode {
-                case 400...499: completion(.failure(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
-                case  500 ... 599 : completion(.failure(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
+                case 400...499:
+                    completion(.failure(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
+                case  500 ... 599 :
+                    completion(.failure(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
                 case 200 ... 299:
                     guard let data = data else {
                         completion(.failure(.invalidData))

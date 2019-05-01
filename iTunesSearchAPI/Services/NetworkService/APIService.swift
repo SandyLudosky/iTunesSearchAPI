@@ -19,7 +19,7 @@ public enum APIService: APIProtocol {
         case .download(let url) : return url //media full url - no parameters
         }
     }
-    public var endpoint: String {
+    public var endpoint: String? {
         switch self {
         case .search: return "search"
         case .lookup: return "lookup"
