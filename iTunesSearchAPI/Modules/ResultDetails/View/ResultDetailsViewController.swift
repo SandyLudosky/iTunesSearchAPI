@@ -12,15 +12,12 @@ import WebKit
 class ResultDetailsViewController: BaseViewController {
     
     @IBOutlet weak var resultImageView: UIImageView!
-    @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var trackNameLabel: UILabel!
-    @IBOutlet weak var webView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     var viewModel: ResultDetailsViewModel?
     var vm: ResultViewModel?
     var result: Result?
     var presenter: ResultDetailsPresenterProtocol?
-
+    var resultWebView: WKWebView?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUp()
@@ -40,8 +37,6 @@ extension ResultDetailsViewController: ResultDetailsViewProtocol {
     
     func configureView() {
         self.title = vm?.trackName
-        artistNameLabel.text = vm?.artistName
-        trackNameLabel.text = vm?.trackName
     }
     
     func showResultDetails() {
@@ -49,6 +44,7 @@ extension ResultDetailsViewController: ResultDetailsViewProtocol {
         presenter?.showResultDetail(for: vm, completion: {
             if let request = self.presenter?.viewModelDetails?.request {
                 self.loadWebView(with: request)
+                self.loader.startAnimating()
             }
             if let artwork = self.presenter?.viewModelDetails?.artwork {
                 self.loadImage(with: artwork)
@@ -62,26 +58,30 @@ extension ResultDetailsViewController {
     private func loadWebView(with request: URLRequest) {
         if #available(iOS 9.1, *) {
             let webConfiguration = WKWebViewConfiguration()
-            let resultWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300), configuration: webConfiguration)
-            resultWebView.uiDelegate = self
-            resultWebView.navigationDelegate = self
-            webView.addSubview(resultWebView)
-            resultWebView.load(request)
+            resultWebView = WKWebView(frame: CGRect(x: 0, y:(self.view.frame.height/2) - 150, width: self.view.frame.width, height: 300), configuration: webConfiguration)
+            resultWebView?.backgroundColor = Color.darkGray
+            resultWebView?.uiDelegate = self
+            resultWebView?.navigationDelegate = self
+            resultWebView?.load(request)
         }
     }
     
     private func loadImage(with artwork: UIImage) {
-        resultImageView.image = artwork
+       // resultImageView.image = artwork
     }
 }
 
-extension ResultDetailsViewController: WKNavigationDelegate, WKUIDelegate {
+extension ResultDetailsViewController: WKNavigationDelegate, UIWebViewDelegate, WKUIDelegate {
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loader.stopAnimating()
         loader.isHidden = false
     }
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        loader.startAnimating()
+        if let webView = resultWebView {
+              self.view.addSubview(webView)
+        }
+      
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         loader.stopAnimating()
