@@ -11,13 +11,10 @@ import UIKit
 class SearchResultsViewController: BaseViewController {
     @IBOutlet var tableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
-    var data: [Result] = []
-    var searchActive : Bool = false
+    var searchActive: Bool = false
     var action: Action?
     var presenter: SearchResultsPresenterProtocol?
-    
     var dataSource = SearchResultDataSource(items: [])
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -95,30 +92,15 @@ extension SearchResultsViewController: UISearchResultsUpdating, UISearchBarDeleg
             //search example search(term: "eminem", mediaType: .music(entity: .mix, attribute: .mixTerm)
             case .search:
                 presenter?.showResults(for: .search(term: seachBarText ?? "", media: .music(entity: .song, attribute: nil), country: .unitedStates), { (viewModels, error) in
-                    if error == nil {
-                        guard let results = viewModels else {
-                            return
-                        }
-                        self.dataSource.update(with: results)
-                        self.tableView.reloadData()
-                    } else {
-                        AlertDialogView.build(with: String(describing: error?.errorDescription), vc: self)
-                    }
+                    self.result(viewModels, error)
                 })
             case .lookUp:
                 presenter?.showResults(for: .lookup(id: seachBarText ?? "", entity: nil), { (viewModels, error) in
-                    if error == nil {
-                        guard let results = viewModels else {
-                            return
-                        }
-                        self.dataSource.update(with: results)
-                        self.tableView.reloadData()
-                    } else {
-                        AlertDialogView.build(with: String(describing: error?.errorDescription), vc: self)
-                    }
+                    self.result(viewModels, error)
                 })
             }
         }
+        searchActive = true
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -143,3 +125,17 @@ extension SearchResultsViewController: UITableViewDelegate {
     }
 }
 
+//MARK - Private
+extension SearchResultsViewController {
+    func result(_ viewModels: [ResultViewModel]?,_ error: ErrorHandler?) {
+        if error == nil {
+            guard let results = viewModels else {
+                return
+            }
+            self.dataSource.update(with: results)
+            self.tableView.reloadData()
+        } else {
+            AlertDialogView.build(with: String(describing: error?.errorDescription), vc: self)
+        }
+    }
+}

@@ -13,7 +13,7 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet var artistName: UILabel!
     @IBOutlet var trackName: UILabel!
     static let identifier = "searchIdentifier"
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = 5
